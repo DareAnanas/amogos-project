@@ -8,13 +8,15 @@ app.use(cors()); // To enable CORS for Vue.js frontend
 app.use(express.static(path.join(__dirname, '../dist')));
 app.use('/api/assets', express.static(path.join(__dirname, '../src/assets/')));
 
+const PORT = process.env.PORT || 3000;
+
 // Create connection to MariaDB
 const db = mysql.createConnection({
-    host: 'junction.proxy.rlwy.net', // Replace with your MariaDB host
-    port: 32806,
-    user: 'root', // Replace with your MariaDB user
-    password: process.env.MARIADB_ROOT_PASSWORD, // Replace with your MariaDB password
-    database: 'railway', // Replace with your MariaDB database
+    host: process.env.DB_HOST,
+    port: 3306,
+    user: process.env.DB_USER,
+    password: process.env.DB_PASS,
+    database: process.env.DB_NAME
 });
 
 // Connect to the database
@@ -31,7 +33,7 @@ app.get('/', (req, res) => {
 });
 
 app.get('/api/data/products', (req, res) => {
-    const sql = 'SELECT id, name, price FROM products';
+    const sql = 'SELECT * FROM posts';
     db.query(sql, (err, results) => {
         if (err) {
             res.status(500).send('Error retrieving data');
@@ -44,6 +46,6 @@ app.get('/api/data/products', (req, res) => {
 
 
 // Start the Express server
-app.listen(3000, () => {
+app.listen(PORT, () => {
     console.log('Server is running on http://localhost:3000');
 });
