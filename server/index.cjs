@@ -2,6 +2,7 @@ const express = require('express');
 const path = require('path');
 const mysql = require('mysql2');
 const cors = require('cors');
+require('dotenv').config()
 
 const app = express();
 app.use(cors()); // To enable CORS for Vue.js frontend
