@@ -287,6 +287,8 @@ div.register {
 }
 
 .volunteer-description {
+  padding: 40px 40px 80px;
+  margin: 0;
   color: white;
   height: 80%;
   display: flex;
@@ -295,6 +297,8 @@ div.register {
 }
 
 .shelter-description {
+  padding: 40px 40px 80px;
+  margin: 0;
   color: white;
   height: 80%;
   display: flex;
