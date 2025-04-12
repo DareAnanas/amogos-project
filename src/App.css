@@ -16,8 +16,6 @@ h1, h2, h3 {
   color: #2c3e50;
 }
 
-
-
 /* Forms */
 form {
   background: #ffffff;
@@ -272,16 +270,24 @@ footer {
   display: flex;
   flex-direction: row;
   justify-content: space-evenly;
-  height: 823px;
   background-image: url("public/background-home-page.jpg");
   background-repeat: no-repeat;
   background-attachment: fixed;
   background-size: 100% 100%;
+  min-height: calc(100vh - 200px);
 }
 
 .app-main p {
   padding: 20px;
   margin: 0px auto;
+}
+
+.register-wrapper {
+  display: flex;
+  flex-direction: row;
+  justify-content: space-evenly;
+  padding: 100px 0;
+  width: 100%;
 }
 
 div.register {
@@ -333,3 +339,7 @@ div.register {
 .register a:hover, .register a:active {
   background-color: #3D1A28F6;
 }
+
+
+/* register form */
+
