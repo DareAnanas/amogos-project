@@ -6,6 +6,10 @@ function AnimalList() {
 
   useEffect(() => {
     fetch("https://bd-h8ye.onrender.com/market", {
+      headers: {
+        'Content-Type': 'application/json',
+        'Authorization': `${document.cookie.token}`,
+      },
       credentials: 'include'  // Optional, if your server expects cookies
     })
       .then((res) => res.json())
