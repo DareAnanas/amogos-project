@@ -9,8 +9,6 @@ function AnimalForm() {
   } = useForm();
 
   const onSubmit = (data) => {
-    // For file inputs the returned value is a FileList.
-    // Access the selected file with data.photo[0]
     const formData = {
       ...data,
       photo: data.photo && data.photo[0] ? data.photo[0] : null,
@@ -26,54 +24,54 @@ function AnimalForm() {
         <input
           type="text"
           placeholder="Species"
-          {...register(("species"), {required: "Species is required"})}
+          {...register("species", { required: "Species is required" })}
         />
-        {errors.species && <p>{errors.species.message}</p>}
+        <p className="error-message">{errors.species ? errors.speecies.message : "\u00A0"}</p>
+      </div>
+
+      <div>
+        <select {...register("gender", { required: "Gender is required" })}>
+          <option value="">Select Gender</option>
+          <option value="male">Male</option>
+          <option value="female">Female</option>
+          <option value="unknown">Unknown</option>
+        </select>
+        <p className="error-message">{errors.gender ? errors.gender.message : "\u00A0"}</p>
       </div>
 
       <div>
         <input
-          type="text"
-          placeholder="Gender"
-          {...register("gender", { required: "Gender is required" })}
+          type="number"
+          placeholder="Age (in years)"
+          {...register("age", { required: "Age is required", min: 0 })}
         />
-        {errors.gender && <p>{errors.gender.message}</p>}
+        <p className="error-message">{errors.age ? errors.age.message : "\u00A0"}</p>
       </div>
 
       <div>
         <input
-          type="text"
-          placeholder="Age"
-          {...register("age", { required: "Age is required" })}
-        />
-        {errors.age && <p>{errors.age.message}</p>}
-      </div>
-
-      <div>
-        <input
-          type="text"
-          placeholder="Color"
+          type="color"
           {...register("color", { required: "Color is required" })}
         />
-        {errors.color && <p>{errors.color.message}</p>}
+          <p className="error-message">{errors.color ? errors.color.message : "\u00A0"}</p>
       </div>
 
       <div>
-        <input
-          type="text"
-          placeholder="Health"
+        <textarea
+          placeholder="Health status (e.g., healthy, injured)"
           {...register("health", { required: "Health is required" })}
-        />
-        {errors.health && <p>{errors.health.message}</p>}
+        ></textarea>
+        <p className="error-message">{errors.health ? errors.health.message : "\u00A0"}</p>
       </div>
 
       <div>
-        <input
-          type="text"
-          placeholder="Status"
-          {...register("status", { required: "Status is required" })}
-        />
-        {errors.status && <p>{errors.status.message}</p>}
+        <select {...register("status", { required: "Status is required" })}>
+          <option value="">Select Status</option>
+          <option value="adopted">Adopted</option>
+          <option value="available">Available</option>
+          <option value="pending">Pending</option>
+        </select>
+        <p className="error-message">{errors.status ? errors.status.message : "\u00A0"}</p>
       </div>
 
       <div>
@@ -84,7 +82,7 @@ function AnimalForm() {
       </div>
 
       <div>
-        <input type="file" {...register("photo")} />
+        <input type="file" accept="image/*" {...register("photo")} />
       </div>
 
       <button type="submit">Submit</button>

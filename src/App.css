@@ -24,10 +24,11 @@ form {
   max-width: 500px;
   display: flex;
   flex-direction: column;
+  row-gap: 10px;
 }
 
 form input, form textarea, form select, form button {
-  margin-bottom: 15px;
+  margin-bottom: 0px;
   padding: 10px;
   border: 1px solid #ccc;
   border-radius: 4px;
@@ -300,11 +301,6 @@ footer {
   min-height: calc(100vh - 200px);
 }
 
-.app-main p {
-  padding: 20px;
-  margin: 0px auto;
-}
-
 .register-wrapper {
   display: flex;
   flex-direction: row;
@@ -366,3 +362,14 @@ div.register {
 
 /* register form */
 
+/* global */
+.error-message {
+  color: #bc3853;
+  font-weight: 600;
+  margin: 0 0 0px 0;
+}
+
+.hidden {
+  display: none;
+}
+/* global */
