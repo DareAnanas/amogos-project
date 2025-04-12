@@ -4,17 +4,18 @@ import path from 'path';
 import { fileURLToPath } from 'url';
 
 const app = express();
-const port = 3000;
+const PORT = process.env.PORT || 3000;
 app.use(cors());
 const __filename = fileURLToPath(import.meta.url);
 const __dirname = path.dirname(__filename);
 
 app.use(express.static(path.join(__dirname, '../dist')));
+app.use(express.static(path.join(__dirname, '../public')));
 
-app.get('/', (req, res) => {
+app.get('*', (req, res) => {
     res.sendFile(path.join(__dirname, '../dist', 'index.html'));
 });
 
-app.listen(port, () => {
+app.listen(PORT, () => {
     console.log('Server is running on http://localhost:3000');
 });
