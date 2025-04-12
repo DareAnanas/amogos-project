@@ -4,6 +4,7 @@ import HomePage from "./components/HomePage";
 import AnimalForm from "./components/AnimalForm";
 import ShelterSearch from "./components/ShelterSearch";
 import ShelterForm from "./components/ShelterForm";
+import VolonteerForm from "./components/VolonteerForm";
 import AnimalList from "./components/AnimalList";
 import "./App.css";
 
@@ -14,6 +15,7 @@ function App() {
         <Route path="/" element={<HomePage />} />
         <Route path="/search-animals" element={<AnimalList />} />
         <Route path="/register-shelter" element={<ShelterForm />} />
+        <Route path="/register-volonteer" element={<VolonteerForm />} />
         <Route path="/post-animal" element={<AnimalForm />} />
         <Route path="/search-shelters" element={<ShelterSearch />} />
       </Routes>
