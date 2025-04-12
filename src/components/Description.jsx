@@ -14,7 +14,7 @@ function Description() {
                 <li>Комунікація з представниками притулків</li>
                 <li>Благодійна діяльність (збори коштів, пожертвування)</li>
               </ul>
-              <Link to="/register-shelter">Зареєструватися</Link>
+              <Link to="/register-volonteer">Зареєструватися</Link>
             </div>
             <div className="register shelter">
             <h3>Зареєструвати акаунт притулку:</h3>

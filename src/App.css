@@ -145,12 +145,18 @@ header img {
   border-radius: 7px;
   font-weight: 600;
   cursor: pointer;
-  transition: all 0.25s ease-out;
+  transition: all 0.3s ease;
+  text-decoration: none;
+  box-shadow: 0 4px 12px rgba(0, 0, 0, 0.15);
+  position: relative;
+  overflow: hidden;
 }
 
 .login-btn:hover {
-  transform: translateY(-3px);
+  background-color: #235f44;
+  box-shadow: 0 6px 18px rgba(26, 61, 47, 0.5);
 }
+
 
 /* footer */
 footer {
