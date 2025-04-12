@@ -43,7 +43,7 @@ function ShelterForm() {
       <h2>Register Your Shelter</h2>
 
       <input type="text" name="name" placeholder="Shelter Name" onChange={handleChange} />
-      
+
       {/* Type Dropdown */}
       <select name="type" onChange={handleChange}>
         <option value="">Select Shelter Type</option>
@@ -71,11 +71,14 @@ function ShelterForm() {
       </select>
 
       <input type="text" name="address" placeholder="Address" onChange={handleChange} />
-      <input type="text" name="contactName" placeholder="Contact Name" onChange={handleChange} />
+      <input type="text" name="contact_name" placeholder="Contact Name" onChange={handleChange} />
+      <input type="text" name="contact_surname" placeholder="Contact Surname" onChange={handleChange} />
+      <input type="text" name="contact_position" placeholder="Contact Position" onChange={handleChange} />
       <input type="text" name="phone" placeholder="Phone" onChange={handleChange} />
       <input type="email" name="email" placeholder="Email" onChange={handleChange} />
       <input type="password" name="password" placeholder="Password" onChange={handleChange} />
       <input type="text" name="website" placeholder="Website" onChange={handleChange} />
+      <input type="text" name="social_media" placeholder="Social Media" onChange={handleChange} />
       <input type="text" name="latitude" placeholder="Latitude" onChange={handleChange} />
       <input type="text" name="longitude" placeholder="Longitude" onChange={handleChange} />
 
