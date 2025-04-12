@@ -21,7 +21,7 @@ function LoginForm() {
           id="email"
           placeholder="Enter your email"
           {...register("email", {
-            required: "Email is required",
+            required: true,
             pattern: {
               value: /^\S+@\S+\.\S+$/,
               message: "Please enter a valid email address",

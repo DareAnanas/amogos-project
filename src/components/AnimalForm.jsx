@@ -26,7 +26,7 @@ function AnimalForm() {
         <input
           type="text"
           placeholder="Species"
-          {...register(("species"), {required: true})}
+          {...register(("species"), {required: "Species is required"})}
         />
         {errors.species && <p>{errors.species.message}</p>}
       </div>
