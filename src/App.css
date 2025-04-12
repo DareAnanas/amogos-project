@@ -302,7 +302,7 @@ footer {
   display: flex;
   flex-direction: row;
   justify-content: space-evenly;
-  background-image: url("public/background-home-page.jpg");
+  background-image: url("background-home-page.jpg");
   background-repeat: no-repeat;
   background-attachment: fixed;
   background-size: 100% 100%;
