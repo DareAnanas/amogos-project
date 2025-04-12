@@ -2,6 +2,7 @@ import React from "react";
 import { Link } from "react-router-dom";
 
 function Home({children}){
+    
     return (
       <>
         <header className="app-header">
@@ -20,7 +21,7 @@ function Home({children}){
           </div>
           {/* Right: Login Button */}
           <div className="header-section header-right">
-            <button className="login-btn">Login</button>
+            <Link to="/user-login" className="login-btn">Login</Link>
           </div>
         </header>
   
@@ -60,5 +61,7 @@ function Home({children}){
       </>
     );
   }
+
+
 
 export default Home;

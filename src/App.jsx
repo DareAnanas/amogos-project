@@ -5,6 +5,7 @@ import AnimalForm from "./components/AnimalForm";
 import ShelterSearch from "./components/ShelterSearch";
 import ShelterForm from "./components/ShelterForm";
 import AnimalList from "./components/AnimalList";
+import LoginPage from "./components/LoginPage";
 import "./App.css";
 
 function App() {
@@ -16,6 +17,7 @@ function App() {
         <Route path="/register-shelter" element={<ShelterForm />} />
         <Route path="/post-animal" element={<AnimalForm />} />
         <Route path="/search-shelters" element={<ShelterSearch />} />
+        <Route path="/user-login" element={<LoginPage />} />
       </Routes>
     </Router>
   );
