@@ -62,6 +62,12 @@ form button {
   border: 1px solid black;
   border-radius: 10px;
   cursor: pointer;
+  margin-top: 20px;;
+}
+
+form input[type="color"] {
+  height: 50px;
+  padding: 5px;
 }
 
 form button:hover {
@@ -76,8 +82,10 @@ form label span {
   color: #E41111;
 }
 
-
-
+.register-under-login {
+  display: flex;
+  justify-content: space-between;
+}
 
 
 /* Responsive Design */
