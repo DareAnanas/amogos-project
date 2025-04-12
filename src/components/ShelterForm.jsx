@@ -38,51 +38,104 @@ function ShelterForm() {
   };
 
   return (
-    <form onSubmit={handleSubmit} className="shelter-form">
-      <h2>Register Your Shelter</h2>
+    <form onSubmit={handleSubmit} className="register-form">
+      <h2>Зареєструвати притулок</h2>
 
-      <input type="text" name="name" placeholder="Shelter Name" onChange={handleChange} />
+      <label>
+        Назва притулку<span>*</span>
+        <input type="text" name="name" placeholder="Назва вашої організації" onChange={handleChange} required />
+      </label>
 
-      {/* Type Dropdown */}
-      <select name="type" onChange={handleChange}>
-        <option value="">Select Shelter Type</option>
-        <option value="Vet Clinic">Vet Clinic</option>
-        <option value="Dog and Cat Shelter">Dog and Cat Shelter</option>
-        <option value="Breeder">Breeder</option>
-      </select>
+      <label>
+        Тип організації<span>*</span>
+        <select name="type" onChange={handleChange} required>
+          <option value="">Оберіть тип</option>
+          <option value="Vet Clinic">Ветеринарна клініка</option>
+          <option value="Dog and Cat Shelter">Притулок для собак і котів</option>
+          <option value="Breeder">Розплідник</option>
+        </select>
+      </label>
 
-      {/* Region Dropdown */}
-      <select name="region" onChange={handleChange}>
-        <option value="">Select Region</option>
-        <option value="Kyiv">Kyiv</option>
-        <option value="Lviv">Lviv</option>
-        <option value="Odessa">Odessa</option>
-        <option value="Kharkiv">Kharkiv</option>
-      </select>
+      <label>
+        Регіон<span>*</span>
+        <select name="region" onChange={handleChange} required>
+          <option value="">Оберіть регіон</option>
+          <option value="Kyiv">Київ</option>
+          <option value="Lviv">Львів</option>
+          <option value="Odessa">Одеса</option>
+          <option value="Kharkiv">Харків</option>
+        </select>
+      </label>
 
-      {/* City Dropdown */}
-      <select name="city" onChange={handleChange}>
-        <option value="">Select City</option>
-        <option value="Kyiv City">Kyiv City</option>
-        <option value="Lviv City">Lviv City</option>
-        <option value="Odessa City">Odessa City</option>
-        <option value="Kharkiv City">Kharkiv City</option>
-      </select>
+      <label>
+        Місто<span>*</span>
+        <select name="city" onChange={handleChange} required>
+          <option value="">Оберіть місто</option>
+          <option value="Kyiv City">Київ</option>
+          <option value="Lviv City">Львів</option>
+          <option value="Odessa City">Одеса</option>
+          <option value="Kharkiv City">Харків</option>
+        </select>
+      </label>
 
-      <input type="text" name="address" placeholder="Address" onChange={handleChange} />
-      <input type="text" name="contact_name" placeholder="Contact Name" onChange={handleChange} />
-      <input type="text" name="contact_surname" placeholder="Contact Surname" onChange={handleChange} />
-      <input type="text" name="contact_position" placeholder="Contact Position" onChange={handleChange} />
-      <input type="text" name="phone" placeholder="Phone" onChange={handleChange} />
-      <input type="email" name="email" placeholder="Email" onChange={handleChange} />
-      <input type="password" name="password" placeholder="Password" onChange={handleChange} />
-      <input type="text" name="website" placeholder="Website" onChange={handleChange} />
-      <input type="text" name="social_media" placeholder="Social Media" onChange={handleChange} />
-      <input type="text" name="latitude" placeholder="Latitude" onChange={handleChange} />
-      <input type="text" name="longitude" placeholder="Longitude" onChange={handleChange} />
+      <label>
+        Адреса<span>*</span>
+        <input type="text" name="address" placeholder="Ваша адреса" onChange={handleChange} required />
+      </label>
 
-      <button type="submit">Register</button>
+      <label>
+        Ім’я контактної особи<span>*</span>
+        <input type="text" name="contact_name" placeholder="Ім’я" onChange={handleChange} required />
+      </label>
+
+      <label>
+        Прізвище контактної особи<span>*</span>
+        <input type="text" name="contact_surname" placeholder="Прізвище" onChange={handleChange} required />
+      </label>
+
+      <label>
+        Посада контактної особи<span>*</span>
+        <input type="text" name="contact_position" placeholder="Посада" onChange={handleChange} required />
+      </label>
+
+      <label>
+        Номер телефону<span>*</span>
+        <input type="text" name="phone" placeholder="+380" onChange={handleChange} required />
+      </label>
+
+      <label>
+        E-mail<span>*</span>
+        <input type="email" name="email" placeholder="email@domain.com" onChange={handleChange} required />
+      </label>
+
+      <label>
+        Пароль<span>*</span>
+        <input type="password" name="password" placeholder="Введіть пароль" onChange={handleChange} required />
+      </label>
+
+      <label>
+        Вебсайт
+        <input type="text" name="website" placeholder="https://..." onChange={handleChange} />
+      </label>
+
+      <label>
+        Соціальні мережі
+        <input type="text" name="social_media" placeholder="Instagram, Facebook тощо" onChange={handleChange} />
+      </label>
+
+      <label>
+        Широта (Latitude)
+        <input type="text" name="latitude" placeholder="Наприклад: 50.4501" onChange={handleChange} />
+      </label>
+
+      <label>
+        Довгота (Longitude)
+        <input type="text" name="longitude" placeholder="Наприклад: 30.5234" onChange={handleChange} />
+      </label>
+
+      <button type="submit">Зареєструвати</button>
     </form>
+
   );
 }
 

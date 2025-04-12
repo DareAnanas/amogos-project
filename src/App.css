@@ -18,11 +18,9 @@ h1, h2, h3 {
 
 /* Forms */
 form {
-  background: #ffffff;
   padding: 20px;
   margin: 20px auto;
   border-radius: 8px;
-  box-shadow: 0 2px 4px rgba(0, 0, 0, 0.1);
   max-width: 500px;
   display: flex;
   flex-direction: column;
@@ -37,19 +35,44 @@ form input, form textarea, form select, form button {
   width: 100%;
 }
 
+form input::placeholder {
+  font-style: italic;
+}
+
+form select {
+  font-style: italic;
+}
+
+form option {
+  font-style: normal;
+}
+
+form select, option {
+  background-color: white;
+}
+
 form textarea {
   resize: vertical;
 }
 
 form button {
-  background-color: #3498db;
-  color: white;
-  border: none;
+  background-color: #CAEEDA;
+  color: black;
+  border: 1px solid black;
+  border-radius: 10px;
   cursor: pointer;
 }
 
 form button:hover {
-  background-color: #2980b9;
+  background-color: #84ebb2;
+}
+
+form label {
+  color: black
+}
+
+form label span {
+  color: #E41111;
 }
 
 

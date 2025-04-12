@@ -13,42 +13,44 @@ function LoginForm() {
   };
 
   return (
-    <form onSubmit={handleSubmit(onSubmit)}>
-      <div>
-        <label htmlFor="email">Email:</label>
+    <form onSubmit={handleSubmit(onSubmit)} className="register-form">
+      <h2>Вхід до акаунта</h2>
+
+      <label htmlFor="email">
+        E-mail<span>*</span>
         <input
           type="email"
           id="email"
-          placeholder="Enter your email"
+          placeholder="email@domain.com"
           {...register("email", {
-            required: "Email is required",
+            required: "Вкажіть ваш email",
             pattern: {
               value: /^\S+@\S+\.\S+$/,
-              message: "Please enter a valid email address",
+              message: "Введіть коректну адресу електронної пошти",
             },
           })}
         />
-        {errors.email && <p>{errors.email.message}</p>}
-      </div>
+      </label>
+      {errors.email && <p className="error-message">{errors.email.message}</p>}
 
-      <div>
-        <label htmlFor="password">Password:</label>
+      <label htmlFor="password">
+        Пароль<span>*</span>
         <input
           type="password"
           id="password"
-          placeholder="Enter your password"
+          placeholder="Ваш пароль"
           {...register("password", {
-            required: "Password is required",
+            required: "Введіть пароль",
             minLength: {
               value: 6,
-              message: "Password must be at least 6 characters long",
+              message: "Пароль має містити щонайменше 6 символів",
             },
           })}
         />
-        {errors.password && <p>{errors.password.message}</p>}
-      </div>
+      </label>
+      {errors.password && <p className="error-message">{errors.password.message}</p>}
 
-      <button type="submit">Login</button>
+      <button type="submit">Увійти</button>
     </form>
   );
 }
