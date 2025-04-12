@@ -16,15 +16,11 @@ h1, h2, h3 {
   color: #2c3e50;
 }
 
-
-
 /* Forms */
 form {
-  background: #ffffff;
   padding: 20px;
   margin: 20px auto;
   border-radius: 8px;
-  box-shadow: 0 2px 4px rgba(0, 0, 0, 0.1);
   max-width: 500px;
   display: flex;
   flex-direction: column;
@@ -39,19 +35,44 @@ form input, form textarea, form select, form button {
   width: 100%;
 }
 
+form input::placeholder {
+  font-style: italic;
+}
+
+form select {
+  font-style: italic;
+}
+
+form option {
+  font-style: normal;
+}
+
+form select, option {
+  background-color: white;
+}
+
 form textarea {
   resize: vertical;
 }
 
 form button {
-  background-color: #3498db;
-  color: white;
-  border: none;
+  background-color: #CAEEDA;
+  color: black;
+  border: 1px solid black;
+  border-radius: 10px;
   cursor: pointer;
 }
 
 form button:hover {
-  background-color: #2980b9;
+  background-color: #84ebb2;
+}
+
+form label {
+  color: black
+}
+
+form label span {
+  color: #E41111;
 }
 
 
@@ -272,16 +293,24 @@ footer {
   display: flex;
   flex-direction: row;
   justify-content: space-evenly;
-  height: 823px;
   background-image: url("public/background-home-page.jpg");
   background-repeat: no-repeat;
   background-attachment: fixed;
   background-size: 100% 100%;
+  min-height: calc(100vh - 200px);
 }
 
 .app-main p {
   padding: 20px;
   margin: 0px auto;
+}
+
+.register-wrapper {
+  display: flex;
+  flex-direction: row;
+  justify-content: space-evenly;
+  padding: 100px 0;
+  width: 100%;
 }
 
 div.register {
@@ -333,3 +362,7 @@ div.register {
 .register a:hover, .register a:active {
   background-color: #3D1A28F6;
 }
+
+
+/* register form */
+

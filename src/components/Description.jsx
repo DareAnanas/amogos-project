@@ -4,6 +4,7 @@ import { Link } from "react-router-dom";
 function Description() {
     return (
         <>
+          <div className="register-wrapper">
             <div className="register volunteer">
               <h3>Зареєструватися як волонтер:</h3>
               <ul className="volunteer-description">
@@ -29,6 +30,7 @@ function Description() {
               </ul>
               <Link to="/register-shelter">Зареєструватися</Link>
             </div>
+          </div>
         </>
     );
 }
