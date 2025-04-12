@@ -1,40 +1,93 @@
-import React, { useState } from "react";
+import React from "react";
+import { useForm } from "react-hook-form";
 
 function AnimalForm() {
-  const [animal, setAnimal] = useState({
-    species: "",
-    gender: "",
-    age: "",
-    color: "",
-    health: "",
-    status: "",
-    description: "",
-    photo: null,
-  });
+  const {
+    register,
+    handleSubmit,
+    formState: { errors },
+  } = useForm();
 
-  const handleChange = (e) => {
-    setAnimal({ ...animal, [e.target.name]: e.target.value });
-  };
+  const onSubmit = (data) => {
+    // For file inputs the returned value is a FileList.
+    // Access the selected file with data.photo[0]
+    const formData = {
+      ...data,
+      photo: data.photo && data.photo[0] ? data.photo[0] : null,
+    };
 
-  const handleFileChange = (e) => {
-    setAnimal({ ...animal, photo: e.target.files[0] });
-  };
-
-  const handleSubmit = (e) => {
-    e.preventDefault();
-    console.log(animal); // Replace with API call
+    console.log(formData);
+    // Replace the console.log with your API call as needed.
   };
 
   return (
-    <form onSubmit={handleSubmit}>
-      <input type="text" name="species" placeholder="Species" onChange={handleChange} />
-      <input type="text" name="gender" placeholder="Gender" onChange={handleChange} />
-      <input type="text" name="age" placeholder="Age" onChange={handleChange} />
-      <input type="text" name="color" placeholder="Color" onChange={handleChange} />
-      <input type="text" name="health" placeholder="Health" onChange={handleChange} />
-      <input type="text" name="status" placeholder="Status" onChange={handleChange} />
-      <textarea name="description" placeholder="Description" onChange={handleChange} />
-      <input type="file" name="photo" onChange={handleFileChange} />
+    <form onSubmit={handleSubmit(onSubmit)}>
+      <div>
+        <input
+          type="text"
+          placeholder="Species"
+          required
+          {...register("species")}
+        />
+        {errors.species && <p>{errors.species.message}</p>}
+      </div>
+
+      <div>
+        <input
+          type="text"
+          placeholder="Gender"
+          {...register("gender", { required: "Gender is required" })}
+        />
+        {errors.gender && <p>{errors.gender.message}</p>}
+      </div>
+
+      <div>
+        <input
+          type="text"
+          placeholder="Age"
+          {...register("age", { required: "Age is required" })}
+        />
+        {errors.age && <p>{errors.age.message}</p>}
+      </div>
+
+      <div>
+        <input
+          type="text"
+          placeholder="Color"
+          {...register("color", { required: "Color is required" })}
+        />
+        {errors.color && <p>{errors.color.message}</p>}
+      </div>
+
+      <div>
+        <input
+          type="text"
+          placeholder="Health"
+          {...register("health", { required: "Health is required" })}
+        />
+        {errors.health && <p>{errors.health.message}</p>}
+      </div>
+
+      <div>
+        <input
+          type="text"
+          placeholder="Status"
+          {...register("status", { required: "Status is required" })}
+        />
+        {errors.status && <p>{errors.status.message}</p>}
+      </div>
+
+      <div>
+        <textarea
+          placeholder="Description"
+          {...register("description")}
+        ></textarea>
+      </div>
+
+      <div>
+        <input type="file" {...register("photo")} />
+      </div>
+
       <button type="submit">Submit</button>
     </form>
   );
