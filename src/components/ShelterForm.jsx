@@ -21,7 +21,6 @@ function ShelterForm() {
 
   const handleSubmit = (e) => {
     e.preventDefault();
-    console.log(shelter)
     fetch('https://bd-h8ye.onrender.com/shelter/register', {
       method: 'POST',
       headers: {
