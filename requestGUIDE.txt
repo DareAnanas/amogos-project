@@ -1,0 +1,308 @@
+// реєстрація як деддом
+
+fetch('/shelter/register', {
+    method: 'POST',
+    headers: {
+        'Content-Type': 'application/json'
+    },
+    body: JSON.stringify({
+        email: "sheltexample.com",
+        password: "securePass123",
+        name: "Happy Paws Shelter",
+        address: "123 Pet Street, Lviv",
+        phone: "1234567890",
+        owner_name: "Olena",
+        owner_surname: "Shevchenko",
+        owner_position: "Director",
+        website: "https://happypaws.org",
+        social_media: "@happypaws"
+    })
+})
+.then(response => response.text())
+.then(data => {
+    console.log(data);
+})
+.catch(error => {
+    console.error('Error during fetch:', error);
+});
+
+
+
+
+
+
+
+//реєстрація як волонтера
+
+    fetch('/volonteer/register', {
+        method: 'POST',
+        headers: {
+            'Content-Type': 'application/json'
+        },
+        body: JSON.stringify({
+            email: "email123",
+            password: "kennel123",
+            name: "ivan",
+            address: "lviv",
+                phone: 12349090,
+            surname: "testsur"
+            
+        })
+    })
+    .then(response => response.text())
+    .then(data => {
+        console.log(data);
+    })
+    .catch(error => {
+    console.error('Error during fetch:', error);
+});
+
+
+
+
+//логінимося і отримуємо токен
+
+fetch('/login', {
+    method: 'POST',
+    headers: {
+        'Content-Type': 'application/json'
+    },
+    body: JSON.stringify({
+        email: 'email123',
+        password:'kennel123'
+    })
+})
+.then(response => response.text())
+.then(data => {
+    console.log(data);
+})
+.catch(error => {
+    console.error('Error during fetch:', error);
+});
+
+
+
+//ПРОВІРКА ТОКЕНА
+fetch('/verifyToken', {
+})
+.then(response => response.text())
+.then(data => {
+    console.log(data);
+})
+.catch(error => {
+    console.error('Error during fetch:', error);
+});
+
+
+
+// КТО Я????
+
+fetch('/myInfo', {
+})
+.then(response => response.text())
+.then(data => {
+    console.log(data);
+})
+.catch(error => {
+    console.error('Error during fetch:', error);
+});
+
+
+
+
+
+//перегляк користувача любого
+
+fetch('/userInfo/:email', {
+})
+.then(response => response.text())
+.then(data => {
+    console.log(data);
+})
+.catch(error => {
+    console.error('Error during fetch:', error);
+});
+
+
+
+//робимо нове оголошення
+
+fetch('/myOffers', {
+    method: 'POST',
+    headers: {
+        'Content-Type': 'application/json'
+    },
+    body: JSON.stringify({
+        photo: "https://example.com/photo.jpg",
+        specie: "dog",
+        sex: "male",
+        age: "3",
+        colour: "brown",
+        health: "vaccinated",
+        status: "available",
+        credentials: "include",
+        description: "Friendly and energetic dog, good with kids."
+    })
+})
+.then(response => response.text())
+.then(data => {
+    console.log(data);
+})
+.catch(error => {
+    console.error('Error during fetch:', error);
+});
+
+
+
+
+
+
+
+//читаємо свої оголошення (можна отримати ІД)
+
+fetch('/myOffers', {
+})
+.then(response => response.text())
+.then(data => {
+    console.log(data);
+})
+.catch(error => {
+    console.error('Error during fetch:', error);
+});
+
+
+
+
+
+
+//редагуємо свої оголошення
+fetch('/editOffer/10', {
+    method: 'POST',
+    headers: {
+        'Content-Type': 'application/json'
+    },
+    body: JSON.stringify({
+        photo: "https://example.com/photo.jpg",
+        specie: "dog pro123",
+        sex: "males",
+        age: 6,
+        colour: "brown",
+        health: "vaccinated",
+        status: "available",
+        credentials: "include",
+        description: "Friendly and energetic dog, good with kids."
+    })
+})
+.then(response => response.text())
+.then(data => {
+    console.log(data);
+})
+.catch(error => {
+    console.error('Error during fetch:', error);
+});
+
+
+
+
+
+//видаляємо свої оголошення через ІД
+fetch('/myOffer/9', {
+    method: 'DELETE',
+})
+.then(response => response.text())
+.then(data => {
+    console.log(data);
+})
+.catch(error => {
+    console.error('Error during fetch:', error);
+});
+
+
+
+
+
+//переглядаємо маркетплейс, all
+fetch('/market', {
+})
+.then(response => response.text())
+.then(data => {
+    console.log(data);
+})
+.catch(error => {
+    console.error('Error during fetch:', error);
+});
+
+
+
+
+
+
+
+//маркетплейс з фільтрами
+fetch('/market/filter?key=age&value=900', {
+})
+.then(response => response.text())
+.then(data => {
+    console.log(data);
+})
+.catch(error => {
+    console.error('Error during fetch:', error);
+});
+
+
+
+//додаємо лайкнуті пропозиції
+fetch('/liked', {
+    method: 'POST',
+    headers: {
+        'Content-Type': 'application/json'
+    },
+    body: JSON.stringify({
+        id: "2"
+    })
+})
+.then(response => response.text())
+.then(data => {
+    console.log(data);
+})
+.catch(error => {
+    console.error('Error during fetch:', error);
+});
+
+
+
+
+//видаляємо лайкнуті пропозиції
+fetch('/liked', {
+    method: 'DELETE',
+    headers: {
+        'Content-Type': 'application/json'
+    },
+    body: JSON.stringify({
+        id: "2"
+    })
+})
+.then(response => response.text())
+.then(data => {
+    console.log(data);
+})
+.catch(error => {
+    console.error('Error during fetch:', error);
+});
+
+
+
+
+//отримуємо лайкнуті пропозиції
+fetch('/liked', {
+})
+.then(response => response.text())
+.then(data => {
+    console.log(data);
+})
+.catch(error => {
+    console.error('Error during fetch:', error);
+});
+
+
+
