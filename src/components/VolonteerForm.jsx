@@ -34,35 +34,35 @@ function VolonteerForm() {
 
   return (
     <form onSubmit={handleSubmit} className="register-form">
-  <h2>Створити акаунт волонтера</h2>
+      <h2>Створити акаунт волонтера</h2>
 
-  <label>
-    Ім’я та прізвище<span>*</span>
-    <input type="text" name="name" placeholder="Як до вас звертатися?" onChange={handleChange} required />
-  </label>
+      <label>
+        Ім’я та прізвище<span>*</span>
+        <input type="text" name="name" placeholder="Як до вас звертатися?" onChange={handleChange} required />
+      </label>
 
-  <label>
-    E-mail<span>*</span>
-    <input type="email" name="email" placeholder="sample@gmail.com" onChange={handleChange} required />
-  </label>
+      <label>
+        E-mail<span>*</span>
+        <input type="email" name="email" placeholder="sample@gmail.com" onChange={handleChange} required />
+      </label>
 
-  <label>
-    Номер телефону<span>*</span>
-    <input type="tel" name="phone" placeholder="+380" onChange={handleChange} required />
-  </label>
+      <label>
+        Номер телефону<span>*</span>
+        <input type="tel" name="phone" placeholder="+380" onChange={handleChange} required />
+      </label>
 
-  <label>
-    Пароль<span>*</span>
-    <input type="password" name="password" placeholder="Введіть ваш пароль" onChange={handleChange} required />
-  </label>
+      <label>
+        Пароль<span>*</span>
+        <input type="password" name="password" placeholder="Введіть ваш пароль" onChange={handleChange} required />
+      </label>
 
-  <label>
-    Адреса<span>*</span>
-    <input type="text" name="address" placeholder="Місце проживання" onChange={handleChange} required />
-  </label>
+      <label>
+        Адреса<span>*</span>
+        <input type="text" name="address" placeholder="Місце проживання" onChange={handleChange} required />
+      </label>
 
-  <button type="submit">Зареєструватися</button>
-</form>
+      <button type="submit">Зареєструватися</button>
+    </form>
 
   );
 }
