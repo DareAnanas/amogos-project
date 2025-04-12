@@ -1,5 +1,6 @@
 import React from "react";
 import { useForm } from "react-hook-form";
+import { Link } from "react-router-dom";
 
 function LoginForm() {
   const {
@@ -72,6 +73,10 @@ function LoginForm() {
       </div>
 
       <button type="submit">Увійти</button>
+      <div className="register-under-login">
+        <Link to="/register-shelter">Register shelter</Link>
+        <Link to="/register-volonteer">Register volonteer</Link>
+      </div>
     </form>
   );
 }
