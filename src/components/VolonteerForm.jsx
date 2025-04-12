@@ -1,69 +1,111 @@
-import React, { useState } from "react";
+import React from "react";
+import { useForm } from "react-hook-form";
 
 function VolonteerForm() {
-  const [volonteer, setVolonteer] = useState({
-    name: "",
-    surname: "",
-    email: "",
-    phone: "",
-    password: "",
-    address: ""
-  });
+  const {
+    register,
+    handleSubmit,
+    formState: { errors },
+  } = useForm();
 
-  const handleChange = (e) => {
-    setVolonteer({ ...volonteer, [e.target.name]: e.target.value });
-  };
-
-  const handleSubmit = (e) => {
-    e.preventDefault();
-    fetch('https://bd-h8ye.onrender.com/volonteer/register', {
-      method: 'POST',
+  const onSubmit = (data) => {
+    fetch("https://bd-h8ye.onrender.com/volonteer/register", {
+      method: "POST",
       headers: {
-          'Content-Type': 'application/json'
+        "Content-Type": "application/json",
       },
-      body: JSON.stringify(volonteer)
+      body: JSON.stringify(data)
     })
-    .then(response => response.text())
-    .then(data => {
+      .then((response) => response.text())
+      .then((data) => {
         console.log(data);
-    })
-    .catch(error => {
-        console.error('Error during fetch:', error);
-    });
+      })
+      .catch((error) => {
+        console.error("Error during fetch:", error);
+      });
   };
 
   return (
-    <form onSubmit={handleSubmit} className="register-form">
+    <form onSubmit={handleSubmit(onSubmit)} className="register-form">
       <h2>Створити акаунт волонтера</h2>
 
-      <label>
-        Ім’я та прізвище<span>*</span>
-        <input type="text" name="name" placeholder="Як до вас звертатися?" onChange={handleChange} required />
-      </label>
+      <div>
+        <label>
+          Ім’я та прізвище<span>*</span>
+          <input
+            type="text"
+            name="name"
+            placeholder="Як до вас звертатися?"
+            {...register("name", { required: "Ім’я та прізвище є обов'язковим" })}
+          />
+        </label>
+        <p className="error-message">
+          {errors.name ? errors.name.message : "\u00A0"}
+        </p>
+      </div>
 
-      <label>
-        E-mail<span>*</span>
-        <input type="email" name="email" placeholder="sample@gmail.com" onChange={handleChange} required />
-      </label>
+      <div>
+        <label>
+          E-mail<span>*</span>
+          <input
+            type="email"
+            name="email"
+            placeholder="sample@gmail.com"
+            {...register("email", { required: "E-mail є обов'язковим" })}
+          />
+        </label>
+        <p className="error-message">
+          {errors.email ? errors.email.message : "\u00A0"}
+        </p>
+      </div>
 
-      <label>
-        Номер телефону<span>*</span>
-        <input type="tel" name="phone" placeholder="+380" onChange={handleChange} required />
-      </label>
+      <div>
+        <label>
+          Номер телефону<span>*</span>
+          <input
+            type="tel"
+            name="phone"
+            placeholder="+380"
+            {...register("phone", { required: "Номер телефону є обов'язковим" })}
+          />
+        </label>
+        <p className="error-message">
+          {errors.phone ? errors.phone.message : "\u00A0"}
+        </p>
+      </div>
 
-      <label>
-        Пароль<span>*</span>
-        <input type="password" name="password" placeholder="Введіть ваш пароль" onChange={handleChange} required />
-      </label>
+      <div>
+        <label>
+          Пароль<span>*</span>
+          <input
+            type="password"
+            name="password"
+            placeholder="Введіть ваш пароль"
+            {...register("password", { required: "Пароль є обов'язковим" })}
+          />
+        </label>
+        <p className="error-message">
+          {errors.password ? errors.password.message : "\u00A0"}
+        </p>
+      </div>
 
-      <label>
-        Адреса<span>*</span>
-        <input type="text" name="address" placeholder="Місце проживання" onChange={handleChange} required />
-      </label>
+      <div>
+        <label>
+          Адреса<span>*</span>
+          <input
+            type="text"
+            name="address"
+            placeholder="Місце проживання"
+            {...register("address", { required: "Адреса є обов'язковою" })}
+          />
+        </label>
+        <p className="error-message">
+          {errors.address ? errors.address.message : "\u00A0"}
+        </p>
+      </div>
 
       <button type="submit">Зареєструватися</button>
     </form>
-
   );
 }
 

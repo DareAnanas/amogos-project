@@ -20,6 +20,7 @@ function AnimalForm() {
 
   return (
     <form onSubmit={handleSubmit(onSubmit)}>
+      <h2>Опублікувати оголошення</h2>
       <div>
         <input
           type="text"

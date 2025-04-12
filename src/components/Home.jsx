@@ -15,8 +15,9 @@ function Home({children}){
           <nav>
             <Link to="/post-animal">Post</Link>
             <Link to="/search-animals">Search</Link>
-            <Link to="/search-shelters">Search</Link>
-            <Link to="/register-shelter">Register</Link>
+            <Link to="/search-shelters">Search shelter</Link>
+            <Link to="/register-shelter">Register shelter</Link>
+            <Link to="/register-volonteer">Register volonteer</Link>
           </nav>
           </div>
           {/* Right: Login Button */}
