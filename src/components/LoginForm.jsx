@@ -9,7 +9,20 @@ function LoginForm() {
   } = useForm();
 
   const onSubmit = (data) => {
-    console.log(data); // Replace with your API call for logging in the user
+    fetch('https://bd-h8ye.onrender.com/login', {
+      method: 'POST',
+      headers: {
+          'Content-Type': 'application/json'
+      },
+      body: JSON.stringify(data)
+    })
+    .then(response => response.json())
+    .then(data => {
+        document.cookie = `token=${data.token}; path=/`
+    })
+    .catch(error => {
+        console.error('Error during fetch:', error);
+    });
   };
 
   return (

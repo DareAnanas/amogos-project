@@ -18,7 +18,7 @@ function VolonteerForm() {
     })
       .then((response) => response.text())
       .then((data) => {
-        console.log(data);
+        alert(data)
       })
       .catch((error) => {
         console.error("Error during fetch:", error);
@@ -31,7 +31,7 @@ function VolonteerForm() {
 
       <div>
         <label>
-          Ім’я та прізвище<span>*</span>
+          Ім’я<span>*</span>
           <input
             type="text"
             name="name"
@@ -41,6 +41,21 @@ function VolonteerForm() {
         </label>
         <p className="error-message">
           {errors.name ? errors.name.message : "\u00A0"}
+        </p>
+      </div>
+
+      <div>
+        <label>
+          Прізвище<span>*</span>
+          <input
+            type="text"
+            name="surname"
+            placeholder="Як до вас звертатися?"
+            {...register("surname", { required: "Ім’я та прізвище є обов'язковим" })}
+          />
+        </label>
+        <p className="error-message">
+          {errors.surname ? errors.surname.message : "\u00A0"}
         </p>
       </div>
 
