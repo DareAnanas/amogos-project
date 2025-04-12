@@ -26,7 +26,7 @@ function AnimalForm() {
           placeholder="Species"
           {...register("species", { required: "Species is required" })}
         />
-        <p className="error-message">{errors.species ? errors.speecies.message : "\u00A0"}</p>
+        <p className="error-message">{errors.species ? errors.species.message : "\u00A0"}</p>
       </div>
 
       <div>
