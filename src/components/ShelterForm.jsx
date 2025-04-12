@@ -21,7 +21,20 @@ function ShelterForm() {
 
   const handleSubmit = (e) => {
     e.preventDefault();
-    console.log(shelter); // Replace with API call
+    fetch('https://bd-h8ye.onrender.com/shelter/register', {
+      method: 'POST',
+      headers: {
+          'Content-Type': 'application/json'
+      },
+      body: JSON.stringify(shelter)
+    })
+    .then(response => response.text())
+    .then(data => {
+        console.log(data);
+    })
+    .catch(error => {
+        console.error('Error during fetch:', error);
+    });
   };
 
   return (
@@ -57,10 +70,14 @@ function ShelterForm() {
       </select>
 
       <input type="text" name="address" placeholder="Address" onChange={handleChange} />
-      <input type="text" name="contactName" placeholder="Contact Name" onChange={handleChange} />
+      <input type="text" name="contact_name" placeholder="Contact Name" onChange={handleChange} />
+      <input type="text" name="contact_surname" placeholder="Contact Surname" onChange={handleChange} />
+      <input type="text" name="contact_position" placeholder="Contact Position" onChange={handleChange} />
       <input type="text" name="phone" placeholder="Phone" onChange={handleChange} />
       <input type="email" name="email" placeholder="Email" onChange={handleChange} />
+      <input type="password" name="password" placeholder="Password" onChange={handleChange} />
       <input type="text" name="website" placeholder="Website" onChange={handleChange} />
+      <input type="text" name="social_media" placeholder="Social Media" onChange={handleChange} />
       <input type="text" name="latitude" placeholder="Latitude" onChange={handleChange} />
       <input type="text" name="longitude" placeholder="Longitude" onChange={handleChange} />
 

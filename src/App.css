@@ -1,3 +1,8 @@
+* {
+  box-sizing: border-box;
+  opacity: 100%;
+}
+
 /* General styles for the app */
 body {
   font-family: Arial, sans-serif;
@@ -11,28 +16,7 @@ h1, h2, h3 {
   color: #2c3e50;
 }
 
-a {
-  text-decoration: none;
-  color: #3498db;
-  margin-right: 15px;
-}
 
-a:hover {
-  text-decoration: underline;
-}
-
-/* Navigation */
-nav {
-  background-color: #2c3e50;
-  padding: 10px;
-  display: flex;
-  justify-content: center;
-}
-
-nav a {
-  color: white;
-  font-weight: bold;
-}
 
 /* Forms */
 form {
@@ -70,21 +54,9 @@ form button:hover {
   background-color: #2980b9;
 }
 
-/* Animal and Shelter List */
-div {
-  margin: 20px auto;
-  padding: 20px;
-  background: white;
-  border-radius: 8px;
-  box-shadow: 0 2px 4px rgba(0, 0, 0, 0.1);
-  max-width: 800px;
-}
 
-img {
-  max-width: 100%;
-  border-radius: 8px;
-  margin-bottom: 10px;
-}
+
+
 
 /* Responsive Design */
 @media (max-width: 768px) {
@@ -100,4 +72,258 @@ img {
   form {
     width: 90%;
   }
+}
+
+/* Navigation */
+nav {
+  box-sizing: content-box;
+  background: transparent;
+  margin: auto;
+  display: flex;
+  justify-content: center;
+  flex-direction: row;
+  border-style: none; 
+}
+
+nav a {
+  text-decoration: none;
+  padding: 10px;
+  color: white;
+  border-style: none solid none none;
+  border-width: 2px;
+  text-align: center;
+  margin: 5px 5px;
+  background: transparent;
+  text-transform: uppercase;
+  font-weight: 900;
+}
+
+nav a:hover {
+  border-style: none solid solid none;
+}
+
+
+/* Header */
+header {
+  height: 100px;
+  display: flex;
+  flex-direction: row;
+  background-color: #1A3D2FE6;
+}
+
+.header-left {
+  padding: 10px 10px 10px 40px;
+  height: 100%;
+  width: 20%;
+}
+
+.header-center {
+  padding: 5px;
+  margin: auto 0px;
+  width: 60%;
+}
+
+.header-right {
+  width: 20%;
+  padding: 10px;
+  margin: auto 0px;
+}
+
+header img {
+  margin: auto;
+  max-height: 80px;
+  opacity: 90%;
+}
+
+.login-btn {
+  padding: 15px 20px;
+  margin-left: 40px;
+  border: none;
+  outline: none;
+  background-color: #1A3D2FE6;
+  color: #eee;
+  border-radius: 7px;
+  font-weight: 600;
+  cursor: pointer;
+  transition: all 0.25s ease-out;
+}
+
+.login-btn:hover {
+  transform: translateY(-3px);
+}
+
+/* footer */
+footer {
+  display: flex;
+  height: 100px;
+  background-color: #1A3D2FE6;
+  color: #ffffff;
+}
+
+.footer-left {
+  padding-left: 40px;
+  margin: auto;
+  width: 30%;
+}
+
+.footer-center {
+  margin: auto;
+  width: 40%;
+}
+
+.footer-right {
+  width: 30%;
+  padding-left: 40px;
+  margin: auto;
+}
+
+/* social  */
+.card {
+  width: fit-content;
+  height: fit-content;
+  background-color: transparent;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  padding: 25px 25px;
+  gap: 20px;
+}
+
+/* for all social containers*/
+.socialContainer {
+  width: 52px;
+  height: 52px;
+  background-color: rgb(44, 44, 44);
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  overflow: hidden;
+  transition-duration: 0.3s;
+}
+/* instagram*/
+.containerOne:hover {
+  background-color: #d62976;
+  transition-duration: 0.3s;
+  transform: scale(1.5);
+  border-radius: 15px;
+}
+/* twitter*/
+.containerTwo:hover {
+  background-color: #00acee;
+  transition-duration: 0.3s;
+  transform: scale(1.5);
+  border-radius: 15px;
+}
+/* linkdin*/
+.containerThree:hover {
+  background-color: #0072b1;
+  transition-duration: 0.3s;
+  transform: scale(1.5);
+  border-radius: 15px;
+}
+/* Whatsapp*/
+.containerFour:hover {
+  background-color: #25d366;
+  transition-duration: 0.3s;
+  transform: scale(1.5);
+  border-radius: 15px;
+}
+
+.socialContainer:active {
+  transform: scale(0.9);
+  transition-duration: 0.3s;
+}
+
+.socialSvg {
+  width: 17px;
+}
+
+.socialSvg path {
+  fill: rgb(255, 255, 255);
+}
+
+.socialContainer:hover .socialSvg {
+  animation: slide-in-top 0.3s both;
+}
+
+@keyframes slide-in-top {
+  0% {
+    transform: translateY(50px);
+    opacity: 0;
+  }
+
+  100% {
+    transform: translateY(0);
+    opacity: 1;
+  }
+}
+
+
+
+
+/* main */
+.app-main {
+  display: flex;
+  flex-direction: row;
+  justify-content: space-evenly;
+  height: 823px;
+  background-image: url("public/background-home-page.jpg");
+  background-repeat: no-repeat;
+  background-attachment: fixed;
+  background-size: 100% 100%;
+}
+
+.app-main p {
+  padding: 20px;
+  margin: 0px auto;
+}
+
+div.register {
+  width: 400px;
+  height: 650px;
+  background-color: #1A3D2F80;
+  border-radius: 20px;
+  margin: auto;
+}
+
+.volunteer-description {
+  padding: 40px 40px 80px;
+  margin: 0;
+  color: white;
+  height: 80%;
+  display: flex;
+  flex-direction: column;
+  justify-content: space-evenly;
+}
+
+.shelter-description {
+  padding: 40px 40px 80px;
+  margin: 0;
+  color: white;
+  height: 80%;
+  display: flex;
+  flex-direction: column;
+  justify-content: space-evenly;
+}
+
+.register h3 {
+  text-align: center;
+  color: white;
+}
+
+.register a:link, .register a:visited {
+  background-color: #1A3D2F;
+  height: 50px;
+  color: white;
+  display: block;
+  text-align: center;
+  text-decoration: none;
+  border-style: solid;
+  border-radius: 5px;
+  padding: 10px;
+  margin: 15px 15px 15px 15px;
+}
+
+.register a:hover, .register a:active {
+  background-color: #3D1A28F6;
 }
