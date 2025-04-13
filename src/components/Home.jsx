@@ -58,9 +58,8 @@ function Home({children}){
           <nav>
             <Link to="/post-animal">Створити оголошення</Link>
             <Link to="/search-animals">Мої оголошення</Link>
-            <Link to="/search-shelters">Search shelter</Link>
-            <Link to="/register-shelter">Register shelter</Link>
-            <Link to="/register-volonteer">Register volonteer</Link>
+            <Link to="/register-shelter">Зареєструвати притулок</Link>
+            <Link to="/register-volonteer">Зареєструватися як волонтер</Link>
           </nav>
           </div>
           <div className="footer-right">
