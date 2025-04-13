@@ -8,7 +8,7 @@ function Home({children}){
         <header className="app-header">
           {/* Left: Logo */}
           <div className="header-section header-left">
-            <img src="anidopt.svg" alt="Logo" className="logo" />
+            <img src="anidopt-logo.svg" alt="Logo" className="logo" />
           </div>
           {/* Center: Navigation */}
           <div className="header-section header-center">
