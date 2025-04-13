@@ -3,6 +3,7 @@ import React, { useEffect, useState } from "react";
 function AnimalList() {
   const [animals, setAnimals] = useState([]);
   const [loading, setLoading] = useState(true);
+  const [showFilters, setShowFilters] = useState(false);
 
   useEffect(() => {
     fetch("https://bd-h8ye.onrender.com/market", {
@@ -13,15 +14,11 @@ function AnimalList() {
     })
       .then((res) => res.json())
       .then((data) => {
-        console.log(data)
-        // Optional: adapt keys to match expected props
-        const mapped = data.map(animal => ({
-          species: animal.specie,
-          gender: animal.sex,
-          color: animal.colour,
-          ...animal
+        const animalsWithId = Object.entries(data).map(([id, animal]) => ({
+          id,
+          ...animal,
         }));
-        setAnimals(mapped);
+        setAnimals(animalsWithId)
         setLoading(false);
       })
       .catch((error) => {
@@ -33,20 +30,66 @@ function AnimalList() {
   if (loading) return <div>Loading...</div>;
 
   return (
-    <div>
-      {animals.map((animal, index) => (
-        <div key={index}>
-          <img src={animal.photo} alt={animal.description} />
-          <h3>{animal.species}</h3>
-          <p>Gender: {animal.gender}</p>
-          <p>Age: {animal.age}</p>
-          <p>Color: {animal.color}</p>
-          <p>Health: {animal.health}</p>
-          <p>Status: {animal.status}</p>
-          <p>{animal.description}</p>
+
+      <div className="animal-list-wrapper">
+        <div class="search-bar">
+          <span class="icon">🔍</span>
+          <input type="text" placeholder="Пошук" />
+          <button className="filter-show-button" onClick={() => setShowFilters(!showFilters)}>
+            {showFilters ? "Згорнути фільтри" : "Розгорнути фільтри"}
+          </button>
         </div>
-      ))}
-    </div>
+        {showFilters && (
+        <div class="filters">
+          <div>
+            <label>Вид</label>
+            <select>
+              <option>Вид</option>
+            </select>
+          </div>
+          <div>
+            <label>Вік</label>
+            <select>
+              <option>Вік</option>
+            </select>
+          </div>
+          <div>
+            <label>Стать</label>
+            <select>
+              <option>Стать</option>
+            </select>
+          </div>
+          <div>
+            <label>Колір</label>
+            <select>
+              <option>Колір</option>
+            </select>
+          </div>
+          <div>
+            <label>Здоров’я</label>
+            <select>
+              <option>Здоров’я</option>
+            </select>
+          </div>
+          <div>
+            <label>Статус</label>
+            <select>
+              <option>Статус</option>
+            </select>
+          </div>
+        </div>
+        )}
+        {animals.map((animal) => (
+        <div key={animal.id} className="animal-list-card">
+          <div class="info">
+            <img src={animal.photo} alt="Песик" />
+            <span>{animal.specie}</span>
+          </div>
+          <button>Перейти</button>
+        </div>
+        ))}
+      </div>
+      
   );
 }
 
