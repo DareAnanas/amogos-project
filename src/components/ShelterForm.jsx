@@ -1,6 +1,5 @@
 import React from "react";
 import { useForm } from "react-hook-form";
-import "D:/Hackathon/best-hacathon/anidopt1/src/service/Interceptor.js";
 
 function ShelterForm() {
   const {

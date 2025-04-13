@@ -1,6 +1,7 @@
 import React from "react";
 import { useForm } from "react-hook-form";
 import { Link } from "react-router-dom";
+import globalInstance from "../service/Interceptor";
 
 function LoginForm() {
   const {
@@ -10,29 +11,36 @@ function LoginForm() {
   } = useForm();
 
   const onSubmit = (data) => {
-    fetch('https://bd-h8ye.onrender.com/login', {
-      method: 'POST',
-      headers: {
-          'Content-Type': 'application/json',
-      },
-      body: JSON.stringify(data)
-    })
-    .then(response => response.json())
-    .then(data => {
-        localStorage.setItem('token', data.token)
-    })
-    .catch(error => {
-        console.error('Error during fetch:', error);
-    });
+    console.log(data);
+    globalInstance
+      .post(
+        "/login",
+        {
+          email: data.email,
+          password: data.password,
+        },
+        {
+          headers: {
+            "Content-Type": "application/json",
+          },
+        }
+      )
+      .then((response) => {
+        // Assuming your token is sent back in response.data.token
+        localStorage.setItem("token", response.data.token);
+      })
+      .catch((error) => {
+        console.error("Error during fetch:", error);
+      });
   };
 
   return (
     <form onSubmit={handleSubmit(onSubmit)} className="register-form">
       <h2>Вхід до акаунта</h2>
-      
+
       <div>
         <label htmlFor="email">
-          E-mail<span>*</span>
+          E-mail
           <input
             type="email"
             id="email"
@@ -53,7 +61,7 @@ function LoginForm() {
 
       <div>
         <label htmlFor="password">
-          Пароль<span>*</span>
+          Пароль
           <input
             type="password"
             id="password"
@@ -75,7 +83,7 @@ function LoginForm() {
       <button type="submit">Увійти</button>
       <div className="register-under-login">
         <Link to="/register-shelter">Register shelter</Link>
-        <Link to="/register-volonteer">Register volonteer</Link>
+        <Link to="/register-volonteer">Register volunteer</Link>
       </div>
     </form>
   );
