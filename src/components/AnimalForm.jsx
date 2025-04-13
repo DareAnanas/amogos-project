@@ -37,11 +37,12 @@ function AnimalForm() {
       <div>
         <label>
           Вид тварини
-          <input
-            type="text"
-            placeholder="Кіт, пес, інше..."
-            {...register("specie", { required: "Вид є обов'язковим" })}
-          />
+          <select {...register("specie", { required: "Видь є обов'язковим" })}>
+            <option value="">Оберіть вид</option>
+            <option value="cat">Кіт</option>
+            <option value="dog">Пес</option>
+            <option value="unknown">Інше</option>
+          </select>
         </label>
         <p className="error-message">{errors.species ? errors.species.message : "\u00A0"}</p>
       </div>
