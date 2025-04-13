@@ -1,6 +1,35 @@
 import React, { useState, useEffect } from "react";
 import globalInstance from "../service/Interceptor";
 
+async function uploadImage() {
+  const fileInput = document.getElementById('uploadFile');
+  const file = fileInput.files[0];
+
+  if (!file) {
+    alert('Please provide image file.');
+    return;
+  }
+
+  const formData = new FormData();
+  formData.append('photo', file);
+
+  try {
+    const res = await fetch("https://bd-h8ye.onrender.com/userImage", {
+      method: 'POST',
+      headers: {
+        "Authorization": `Bearer ${localStorage.getItem("token")}`,
+      },
+      body: formData
+    });
+
+    const data = await res.json();
+    alert(data.message || JSON.stringify(data));
+  } catch (err) {
+    console.error(err);
+    alert('Upload failed');
+  }
+}
+
 function ProfilePage() {
   const [userInfo, setUserInfo] = useState(null);
   const [loading, setLoading] = useState(true);
@@ -26,6 +55,7 @@ function ProfilePage() {
         setLoading(false);
       });
   }, []);
+
 
   if (loading) return <p>Завантаження профілю...</p>;
   if (error) return <p>{error}</p>;
@@ -63,6 +93,8 @@ function ProfilePage() {
           </p>
         </div>
       )}
+      <input type="file" id="uploadFile"/>
+      <button onClick={uploadImage}>Завантажити зображення профілю</button>
     </div>
   );
 }
