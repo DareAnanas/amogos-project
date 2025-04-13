@@ -14,79 +14,118 @@ function AnimalForm() {
       photo: data.photo && data.photo[0] ? data.photo[0] : null,
     };
 
-    console.log(formData);
-    // Replace the console.log with your API call as needed.
-  };
+    fetch('https://bd-h8ye.onrender.com/myOffers', {
+        method: 'POST',
+        headers: {
+            'Content-Type': 'application/json',
+            'Authorization': `Bearer ${localStorage.getItem('token')}`,
+        },
+        body: JSON.stringify(formData)
+    })
+    .then(response => response.text())
+    .then(data => {
+        console.log(data);
+    })
+    .catch(error => {
+        console.error('Error during fetch:', error);
+    });
+      // Replace the console.log with your API call as needed.
+    };
 
   return (
-    <form onSubmit={handleSubmit(onSubmit)}>
+    <form onSubmit={handleSubmit(onSubmit)} className="register-form">
       <h2>Опублікувати оголошення</h2>
+
       <div>
-        <input
-          type="text"
-          placeholder="Species"
-          {...register("species", { required: "Species is required" })}
-        />
+        <label>
+          Вид тварини
+          <input
+            type="text"
+            placeholder="Кіт, пес, інше..."
+            {...register("specie", { required: "Вид є обов'язковим" })}
+          />
+        </label>
         <p className="error-message">{errors.species ? errors.species.message : "\u00A0"}</p>
       </div>
 
       <div>
-        <select {...register("gender", { required: "Gender is required" })}>
-          <option value="">Select Gender</option>
-          <option value="male">Male</option>
-          <option value="female">Female</option>
-          <option value="unknown">Unknown</option>
-        </select>
+        <label>
+          Стать
+          <select {...register("sex", { required: "Стать є обов'язковою" })}>
+            <option value="">Оберіть стать</option>
+            <option value="male">Самець</option>
+            <option value="female">Самка</option>
+            <option value="unknown">Невідомо</option>
+          </select>
+        </label>
         <p className="error-message">{errors.gender ? errors.gender.message : "\u00A0"}</p>
       </div>
 
       <div>
-        <input
-          type="number"
-          placeholder="Age (in years)"
-          {...register("age", { required: "Age is required", min: 0 })}
-        />
+        <label>
+          Вік
+          <input
+            type="number"
+            placeholder="Вік у роках"
+            {...register("age", { required: "Вік є обов'язковим", min: 0 })}
+          />
+        </label>
         <p className="error-message">{errors.age ? errors.age.message : "\u00A0"}</p>
       </div>
 
       <div>
-        <input
-          type="color"
-          {...register("color", { required: "Color is required" })}
-        />
-          <p className="error-message">{errors.color ? errors.color.message : "\u00A0"}</p>
+        <label>
+          Колір
+          <input
+            type="color"
+            {...register("colour", { required: "Колір є обов'язковим" })}
+          />
+        </label>
+        <p className="error-message">{errors.color ? errors.color.message : "\u00A0"}</p>
       </div>
 
       <div>
-        <textarea
-          placeholder="Health status (e.g., healthy, injured)"
-          {...register("health", { required: "Health is required" })}
-        ></textarea>
+        <label>
+          Стан здоров’я
+          <textarea
+            placeholder="Здоровий, поранений, хворий..."
+            {...register("health", { required: "Стан здоров’я є обов'язковим" })}
+          ></textarea>
+        </label>
         <p className="error-message">{errors.health ? errors.health.message : "\u00A0"}</p>
       </div>
 
       <div>
-        <select {...register("status", { required: "Status is required" })}>
-          <option value="">Select Status</option>
-          <option value="adopted">Adopted</option>
-          <option value="available">Available</option>
-          <option value="pending">Pending</option>
-        </select>
+        <label>
+          Статус
+          <select {...register("status", { required: "Статус є обов'язковим" })}>
+            <option value="">Оберіть статус</option>
+            <option value="available">Доступний</option>
+            <option value="pending">У процесі</option>
+            <option value="adopted">Всиновлений</option>
+          </select>
+        </label>
         <p className="error-message">{errors.status ? errors.status.message : "\u00A0"}</p>
       </div>
 
       <div>
-        <textarea
-          placeholder="Description"
-          {...register("description")}
-        ></textarea>
+        <label>
+          Опис
+          <textarea
+            placeholder="Характеристика, звички, особливості..."
+            {...register("description")}
+          ></textarea>
+        </label>
       </div>
 
       <div>
-        <input type="file" accept="image/*" {...register("photo")} />
+        <label>
+          Фото
+          <input type="file" accept="image/*" {...register("photo")} />
+        </label>
       </div>
 
-      <button type="submit">Submit</button>
+      <button type="submit">Опублікувати</button>
     </form>
   );
 }

@@ -32,15 +32,15 @@ function AnimalList() {
   return (
 
       <div className="animal-list-wrapper">
-        <div class="search-bar">
-          <span class="icon">🔍</span>
+        <div className="search-bar">
+          <span className="icon">🔍</span>
           <input type="text" placeholder="Пошук" />
           <button className="filter-show-button" onClick={() => setShowFilters(!showFilters)}>
             {showFilters ? "Згорнути фільтри" : "Розгорнути фільтри"}
           </button>
         </div>
         {showFilters && (
-        <div class="filters">
+        <div className="filters">
           <div>
             <label>Вид</label>
             <select>
@@ -81,7 +81,7 @@ function AnimalList() {
         )}
         {animals.map((animal) => (
         <div key={animal.id} className="animal-list-card">
-          <div class="info">
+          <div className="info">
             <img src={animal.photo} alt="Песик" />
             <span>{animal.specie}</span>
           </div>
