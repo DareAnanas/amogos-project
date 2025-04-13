@@ -1,5 +1,6 @@
 import React from "react";
 import { useForm } from "react-hook-form";
+import globalInstance from "../service/Interceptor";
 
 function ShelterForm() {
   const {
@@ -9,22 +10,18 @@ function ShelterForm() {
   } = useForm();
 
   const onSubmit = (data) => {
-    fetch("https://bd-h8ye.onrender.com/shelter/register", {
-      method: "POST",
-      headers: {
-        "Content-Type": "application/json",
-      },
-      body: JSON.stringify(data),
-    })
-      .then((response) => response.text())
-      .then((data) => {
-        console.log(data);
+    globalInstance
+      .post("/shelter/register", data, {
+        headers: { "Content-Type": "application/json" },
+      })
+      .then((response) => {
+        console.log(response.data);
       })
       .catch((error) => {
-        console.error("Error during fetch:", error);
+        console.error("Error during axios post:", error);
       });
-  };
-
+    };
+    
   return (
     <form onSubmit={handleSubmit(onSubmit)} className="register-form">
       <h2>Зареєструвати притулок</h2>

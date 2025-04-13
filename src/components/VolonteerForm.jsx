@@ -1,5 +1,6 @@
 import React from "react";
 import { useForm } from "react-hook-form";
+import globalInstance from "../service/Interceptor";
 
 function VolonteerForm() {
   const {
@@ -9,21 +10,17 @@ function VolonteerForm() {
   } = useForm();
 
   const onSubmit = (data) => {
-    fetch("https://bd-h8ye.onrender.com/volonteer/register", {
-      method: "POST",
-      headers: {
-        "Content-Type": "application/json",
-      },
-      body: JSON.stringify(data)
+    globalInstance
+    .post("/volonteer/register", data, {
+      headers: { "Content-Type": "application/json" },
     })
-      .then((response) => response.text())
-      .then((data) => {
-        alert(data)
-      })
-      .catch((error) => {
-        console.error("Error during fetch:", error);
-      });
-  };
+    .then((response) => {
+      alert(response.data);
+    })
+    .catch((error) => {
+      console.error("Error during axios post:", error);
+    });
+};
 
   return (
     <form onSubmit={handleSubmit(onSubmit)} className="register-form">
