@@ -38,16 +38,15 @@ function Home({children}){
           {/* Center: Navigation */}
           <div className="header-section header-center">
           <nav>
-            <Link to="/post-animal">Post</Link>
-            <Link to="/search-animals">Search Pet</Link>
-            <Link to="/search-shelters">Search shelter</Link>
-            <Link to="/register-shelter">Register shelter</Link>
-            <Link to="/register-volonteer">Register volonteer</Link>
+            <Link to="/post-animal">Створити оголошення</Link>
+            <Link to="/my-posts">Мої оголошення</Link>
+            <Link to="/search-animals">Всі оголошення</Link>
           </nav>
           </div>
           {/* Right: Login Button */}
           <div className="header-section header-right">
             <Link to="/user-login" className="login-btn">Login</Link>
+            <Link to="/" className="login-btn">Sign Up</Link>
             <Link to="/profile-page"><img src={"public/user_blank.png"} alt="Profile" className="profile" /></Link>
           </div>
           
@@ -65,8 +64,8 @@ function Home({children}){
           </div>
           <div className="footer-center">
           <nav>
-            <Link to="/post-animal">Post</Link>
-            <Link to="/search-animals">Search</Link>
+            <Link to="/post-animal">Створити оголошення</Link>
+            <Link to="/search-animals">Мої оголошення</Link>
             <Link to="/search-shelters">Search shelter</Link>
             <Link to="/register-shelter">Register shelter</Link>
             <Link to="/register-volonteer">Register volonteer</Link>

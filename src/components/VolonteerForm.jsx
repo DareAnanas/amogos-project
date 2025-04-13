@@ -15,7 +15,7 @@ function VolonteerForm() {
       headers: { "Content-Type": "application/json" },
     })
     .then((response) => {
-      alert(response.data);
+      alert("Користувач успішно зареєстрований");
     })
     .catch((error) => {
       console.error("Error during axios post:", error);
@@ -123,7 +123,7 @@ function VolonteerForm() {
             type="text"
             name="photo"
             placeholder="URL"
-            {...register("address")}
+            {...register("photo")}
           />
         </label>
         <p className="error-message">

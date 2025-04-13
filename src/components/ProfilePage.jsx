@@ -93,8 +93,8 @@ function ProfilePage() {
           </p>
         </div>
       )}
-      <input type="file" id="uploadFile"/>
-      <button onClick={uploadImage}>Завантажити зображення профілю</button>
+      {/* <input type="file" id="uploadFile"/>
+      <button onClick={uploadImage}>Завантажити зображення профілю</button> */}
     </div>
   );
 }

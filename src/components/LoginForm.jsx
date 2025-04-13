@@ -26,8 +26,8 @@ function LoginForm() {
         }
       )
       .then((response) => {
-        // Assuming your token is sent back in response.data.token
         localStorage.setItem("token", response.data.token);
+        alert("Вхід виконано")
       })
       .catch((error) => {
         console.error("Error during fetch:", error);
