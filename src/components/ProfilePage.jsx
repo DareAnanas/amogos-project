@@ -67,9 +67,7 @@ function ProfilePage() {
         console.log("User image response:", response);
         // Assume the response data is either a complete URL or a filename.
         let photo = response.data;
-        if (photo && !photo.startsWith("http")) {
-          photo = `${globalInstance.defaults.baseURL}${photo}`;
-        }
+        photo = `${globalInstance.defaults.baseURL}${photo}`;
         setUserPhoto(photo);
         setLoading(false);
       })
@@ -114,9 +112,9 @@ function ProfilePage() {
     <div className="profile-container">
       <h1>Профіль користувача</h1>
 
-      <div className="profile-image-section">
+      {/* <div className="profile-image-section">
         {userPhoto ? (
-          <img src={userPhoto} alt="Profile" className="profile-img" />
+          <img src={userPhoto || "public/user_blank.png"} alt="Profile" className="profile-img" />
         ) : (
           <img src="default-profile.png" alt="Default Profile" className="profile-img" />
         )}
@@ -133,7 +131,7 @@ function ProfilePage() {
             </button>
           </form>
         </div>
-      </div>
+      </div> */}
 
       {userInfo && (
         <div className="basic-info">
