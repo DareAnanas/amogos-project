@@ -116,21 +116,6 @@ function VolonteerForm() {
         </p>
       </div>
 
-      <div>
-        <label>
-          Фото
-          <input
-            type="text"
-            name="photo"
-            placeholder="URL"
-            {...register("photo")}
-          />
-        </label>
-        <p className="error-message">
-          {errors.photo ? errors.photo.message : "\u00A0"}
-        </p>
-      </div>
-
       <button type="submit">Зареєструватися</button>
     </form>
   );
