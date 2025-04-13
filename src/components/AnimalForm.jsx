@@ -13,24 +13,21 @@ function AnimalForm() {
       ...data,
       photo: data.photo && data.photo[0] ? data.photo[0] : null,
     };
-
-    fetch('https://bd-h8ye.onrender.com/myOffers', {
-        method: 'POST',
+  
+    globalInstance
+      .post("/myOffers", formData, {
         headers: {
-            'Content-Type': 'application/json',
-            'Authorization': `Bearer ${localStorage.getItem('token')}`,
+          "Content-Type": "application/json",
+          "Authorization": `Bearer ${localStorage.getItem("token")}`,
         },
-        body: JSON.stringify(formData)
-    })
-    .then(response => response.text())
-    .then(data => {
-        console.log(data);
-    })
-    .catch(error => {
-        console.error('Error during fetch:', error);
-    });
-      // Replace the console.log with your API call as needed.
-    };
+      })
+      .then((response) => {
+        console.log(response.data);
+      })
+      .catch((error) => {
+        console.error("Error during axios post:", error);
+      });
+  };
 
   return (
     <form onSubmit={handleSubmit(onSubmit)} className="register-form">
