@@ -9,24 +9,17 @@ function Home({children}){
       .get("/userImage", {
         headers: {
           "Authorization": `Bearer ${localStorage.getItem("token")}`,
+          "Accept": "application/json",
         },
       })
       .then((response) => {
-        console.log(response);
-        // Assume the response data has a property "photo"
-        let photo = response.data;
-        // If photo does not start with http(s), assume it's just a filename and prepend the base URL.
-        if (photo && !photo.startsWith("http")) {
-          photo = `${globalInstance.defaults.baseURL}${photo}`;
-        }
-        setUserPhoto(photo);
-      
+        console.log("Received user photo:", response.data.photo);
+        setUserPhoto(response.data.photo);
       })
-      .catch((error) => {
-        console.error("Error retrieving user photo:", error);
-        
+      .catch((err) => {
+        console.error("Error retrieving user phtot:", err);
       });
-  }, []); 
+  }, []);
 
     return (
       <>
@@ -48,7 +41,7 @@ function Home({children}){
           {/* Right: Login Button */}
           <div className="header-section header-right">
             <Link to="/user-login" className="login-btn">Login</Link>
-            <Link to="/profile-page"><img src={"public/user_blank.png"} alt="Profile" className="profile" /></Link>
+            <Link to="/profile-page"><img src={userPhoto || "public/user_blank.png"} alt="Profile" className="profile" /></Link>
           </div>
           
         </header>

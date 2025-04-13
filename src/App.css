@@ -835,7 +835,56 @@ div.register {
 }
 
 .normal {
+  margin-top: 20px;
   font-size: 15px;
 }
+
+
 /* Hamster */
 /* AnimalList */
+
+.profile-container {
+  max-width: 800px;
+  margin: 40px auto;
+  padding: 30px;
+  background-color: rgba(255, 255, 255, 0.85); /* semi-transparent background */
+  border-radius: 20px;
+  box-shadow: 0 4px 20px rgba(0, 0, 0, 0.2);
+  font-family: 'Segoe UI', sans-serif;
+  color: #1e2d2f;
+  backdrop-filter: blur(10px);
+}
+
+.profile-container h1 {
+  font-size: 2rem;
+  font-weight: 700;
+  margin-bottom: 20px;
+  color: #1a3d3f;
+  text-align: center;
+}
+
+.basic-info p,
+.shelter-info p {
+  font-size: 1.1rem;
+  margin: 10px 0;
+  line-height: 1.4;
+}
+
+.basic-info strong,
+.shelter-info strong {
+  color: #143738;
+}
+
+.shelter-info {
+  margin-top: 30px;
+  padding-top: 20px;
+  border-top: 2px dashed #245b5d;
+}
+
+.shelter-info h2 {
+  font-size: 1.5rem;
+  font-weight: 600;
+  margin-bottom: 15px;
+  color: #174c4f;
+  text-align: center;
+}
