@@ -1,5 +1,6 @@
 import React from "react";
 import { useForm } from "react-hook-form";
+import "D:/Hackathon/best-hacathon/anidopt1/src/service/Interceptor.js";
 
 function ShelterForm() {
   const {
@@ -31,7 +32,7 @@ function ShelterForm() {
 
       <div>
         <label>
-          Назва притулку<span>*</span>
+          Назва притулку
           <input
             type="text"
             placeholder="Назва вашої організації"
@@ -45,7 +46,7 @@ function ShelterForm() {
 
       <div>
         <label>
-          Тип організації<span>*</span>
+          Тип організації
           <select
             {...register("type", { required: "Тип організації є обов'язковим" })}
           >
@@ -62,7 +63,7 @@ function ShelterForm() {
 
       <div>
         <label>
-          Регіон<span>*</span>
+          Регіон
           <select
             {...register("region", { required: "Регіон є обов'язковим" })}
           >
@@ -80,7 +81,7 @@ function ShelterForm() {
 
       <div>
         <label>
-          Місто<span>*</span>
+          Місто
           <select
             {...register("city", { required: "Місто є обов'язковим" })}
           >
@@ -98,7 +99,7 @@ function ShelterForm() {
 
       <div>
         <label>
-          Адреса<span>*</span>
+          Адреса
           <input
             type="text"
             placeholder="Ваша адреса"
@@ -112,7 +113,7 @@ function ShelterForm() {
 
       <div>
         <label>
-          Ім’я контактної особи<span>*</span>
+          Ім’я контактної особи
           <input
             type="text"
             placeholder="Ім’я"
@@ -128,7 +129,7 @@ function ShelterForm() {
 
       <div>
         <label>
-          Прізвище контактної особи<span>*</span>
+          Прізвище контактної особи
           <input
             type="text"
             placeholder="Прізвище"
@@ -144,7 +145,7 @@ function ShelterForm() {
 
       <div>
         <label>
-          Посада контактної особи<span>*</span>
+          Посада контактної особи
           <input
             type="text"
             placeholder="Посада"
@@ -160,7 +161,7 @@ function ShelterForm() {
 
       <div>
         <label>
-          Номер телефону<span>*</span>
+          Номер телефону
           <input
             type="text"
             placeholder="+380"
@@ -174,7 +175,7 @@ function ShelterForm() {
 
       <div>
         <label>
-          E-mail<span>*</span>
+          E-mail
           <input
             type="email"
             placeholder="email@domain.com"
@@ -188,7 +189,7 @@ function ShelterForm() {
 
       <div>
         <label>
-          Пароль<span>*</span>
+          Пароль
           <input
             type="password"
             placeholder="Введіть пароль"
@@ -202,7 +203,7 @@ function ShelterForm() {
 
       <div>
         <label>
-          Вебсайт<span>*</span>
+          Вебсайт
           <input
             type="text"
             placeholder="https://..."
@@ -216,7 +217,7 @@ function ShelterForm() {
 
       <div>
         <label>
-          Соціальні мережі<span>*</span>
+          Соціальні мережі
           <input
             type="text"
             placeholder="Instagram, Facebook тощо"
@@ -230,7 +231,7 @@ function ShelterForm() {
 
       <div>
         <label>
-          Широта (Latitude)<span>*</span>
+          Широта (Latitude)
           <input
             type="text"
             placeholder="Наприклад: 50.4501"
@@ -244,7 +245,7 @@ function ShelterForm() {
 
       <div>
         <label>
-          Довгота (Longitude)<span>*</span>
+          Довгота (Longitude)
           <input
             type="text"
             placeholder="Наприклад: 30.5234"

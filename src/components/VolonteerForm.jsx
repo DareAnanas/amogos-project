@@ -31,7 +31,7 @@ function VolonteerForm() {
 
       <div>
         <label>
-          Ім’я<span>*</span>
+          Ім’я
           <input
             type="text"
             name="name"
@@ -46,7 +46,7 @@ function VolonteerForm() {
 
       <div>
         <label>
-          Прізвище<span>*</span>
+          Прізвище
           <input
             type="text"
             name="surname"
@@ -61,7 +61,7 @@ function VolonteerForm() {
 
       <div>
         <label>
-          E-mail<span>*</span>
+          E-mail
           <input
             type="email"
             name="email"
@@ -76,7 +76,7 @@ function VolonteerForm() {
 
       <div>
         <label>
-          Номер телефону<span>*</span>
+          Номер телефону
           <input
             type="tel"
             name="phone"
@@ -91,7 +91,7 @@ function VolonteerForm() {
 
       <div>
         <label>
-          Пароль<span>*</span>
+          Пароль
           <input
             type="password"
             name="password"
@@ -106,7 +106,7 @@ function VolonteerForm() {
 
       <div>
         <label>
-          Адреса<span>*</span>
+          Адреса
           <input
             type="text"
             name="address"
