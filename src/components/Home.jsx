@@ -37,7 +37,13 @@ function Home({children}){
             <p>&copy; {new Date().getFullYear()} Hackathon</p>
           </div>
           <div className="footer-center">
-            <p>BLA BLA BLA BLE BLE BLU BLU BLU</p>
+          <nav>
+            <Link to="/post-animal">Post</Link>
+            <Link to="/search-animals">Search</Link>
+            <Link to="/search-shelters">Search shelter</Link>
+            <Link to="/register-shelter">Register shelter</Link>
+            <Link to="/register-volonteer">Register volonteer</Link>
+          </nav>
           </div>
           <div className="footer-right">
           <div className="card">
