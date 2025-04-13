@@ -4,22 +4,22 @@ import globalInstance from "../service/Interceptor";
 
 function Home({children}){
   const [userPhoto, setUserPhoto] = useState(null);
-  useEffect(() => {
-    globalInstance
-      .get("/userImage", {
-        headers: {
-          "Authorization": `Bearer ${localStorage.getItem("token")}`,
-          "Accept": "application/json",
-        },
-      })
-      .then((response) => {
-        console.log("Received user photo:", response.data.photo);
-        setUserPhoto(response.data.photo);
-      })
-      .catch((err) => {
-        console.error("Error retrieving user phtot:", err);
-      });
-  }, []);
+  // useEffect(() => {
+  //   globalInstance
+  //     .get("/userImage", {
+  //       headers: {
+  //         "Authorization": `Bearer ${localStorage.getItem("token")}`,
+  //         "Accept": "application/json",
+  //       },
+  //     })
+  //     .then((response) => {
+  //       console.log("Received user photo:", response.data.photo);
+  //       setUserPhoto(response.data.photo);
+  //     })
+  //     .catch((err) => {
+  //       console.error("Error retrieving user phtot:", err);
+  //     });
+  // }, []);
 
     return (
       <>
