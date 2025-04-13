@@ -19,7 +19,7 @@ function LoginForm() {
     })
     .then(response => response.json())
     .then(data => {
-        document.cookie = `token=${data.token}; path=/`
+        localStorage.setItem('token', data.token)
     })
     .catch(error => {
         console.error('Error during fetch:', error);

@@ -8,12 +8,12 @@ function AnimalList() {
     fetch("https://bd-h8ye.onrender.com/market", {
       headers: {
         'Content-Type': 'application/json',
-        'Authorization': `${document.cookie.token}`,
+        'Authorization': `Bearer ${localStorage.getItem('token')}`,
       },
-      credentials: 'include'  // Optional, if your server expects cookies
     })
       .then((res) => res.json())
       .then((data) => {
+        console.log(data)
         // Optional: adapt keys to match expected props
         const mapped = data.map(animal => ({
           species: animal.specie,
