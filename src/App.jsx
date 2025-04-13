@@ -8,6 +8,7 @@ import AnimalList from "./components/AnimalList";
 import LoginForm from "./components/LoginForm";
 import Home from "./components/Home";
 import Description from "./components/Description";
+import ProfilePage from "./components/ProfilePage";
 import "./App.css";
 
 function App() {
@@ -23,6 +24,7 @@ function App() {
           <Route path="/post-animal" element={<AnimalForm />} />
           <Route path="/search-shelters" element={<ShelterSearch />} />
           <Route path="/user-login" element={<LoginForm />} />
+          <Route path="/profile-page" element={<ProfilePage />} />
         </Routes>
       </Home>
     </Router>

@@ -154,6 +154,9 @@ header {
 }
 
 .header-right {
+  display: flex;
+  flex-direction: row;
+  justify-content: space-evenly;
   width: 20%;
   padding: 10px;
   margin: auto 0px;
@@ -163,11 +166,17 @@ header img {
   margin: auto;
   max-height: 80px;
   opacity: 90%;
+  border-radius: 50%;
+}
+
+.profile {
+  margin-top: 20px;
+  height: 50px;
 }
 
 .login-btn {
+  margin: 20px 10px 20px 10px;
   padding: 15px 20px;
-  margin-left: 40px;
   border: none;
   outline: none;
   background-color: #1A3D2FE6;

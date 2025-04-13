@@ -1,8 +1,33 @@
-import React from "react";
+import React, { useState, useEffect } from "react";
 import { Link } from "react-router-dom";
+import globalInstance from "../service/Interceptor";
 
 function Home({children}){
-    
+  const [userPhoto, setUserPhoto] = useState(null);
+  useEffect(() => {
+    globalInstance
+      .get("/userImage", {
+        headers: {
+          "Authorization": `Bearer ${localStorage.getItem("token")}`,
+        },
+      })
+      .then((response) => {
+        console.log(response);
+        // Assume the response data has a property "photo"
+        let photo = response.data;
+        // If photo does not start with http(s), assume it's just a filename and prepend the base URL.
+        if (photo && !photo.startsWith("http")) {
+          photo = `${globalInstance.defaults.baseURL}${photo}`;
+        }
+        setUserPhoto(photo);
+      
+      })
+      .catch((error) => {
+        console.error("Error retrieving user photo:", error);
+        
+      });
+  }, []); 
+
     return (
       <>
         <header className="app-header">
@@ -23,7 +48,9 @@ function Home({children}){
           {/* Right: Login Button */}
           <div className="header-section header-right">
             <Link to="/user-login" className="login-btn">Login</Link>
+            <Link to="/profile-page"><img src={"public/user_blank.png"} alt="Profile" className="profile" /></Link>
           </div>
+          
         </header>
   
         {/* Main Content */}
