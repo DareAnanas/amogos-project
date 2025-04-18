@@ -21,10 +21,10 @@ globalInstance.interceptors.response.use(
     return response;
   },
   (error) => {
-    if (error.response && error.response.status === 401) {
-      // If 401 Unauthorized, redirect to home page
-      window.location.href = "/";
-    }
+    // if (error.response && error.response.status === 401) {
+    //   // If 401 Unauthorized, redirect to home page
+    //   window.location.href = "/";
+    // }
     return Promise.reject(error);
   }
 );

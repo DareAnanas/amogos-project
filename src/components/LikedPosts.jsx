@@ -1,9 +1,8 @@
 import React, { useEffect, useState } from "react";
 import globalInstance from "../service/Interceptor";
 import Hamster from "./HamsterLoading";
-import LikeButton from "./LikeButton";
 
-function AnimalList() {
+function LikedPosts() {
   const [animals, setAnimals] = useState([]);
   const [loading, setLoading] = useState(true);
   const [showFilters, setShowFilters] = useState(false);
@@ -16,7 +15,7 @@ function AnimalList() {
 
   useEffect(() => {
     globalInstance
-      .get("/market", {
+      .get("/liked", {
         headers: {
           "Content-Type": "application/json",
           "Authorization": `Bearer ${localStorage.getItem("token")}`,
@@ -83,26 +82,6 @@ function AnimalList() {
     }
     return true;
   });
-
-  const addLiked = async (animal) => {
-    try {
-      const token = localStorage.getItem("token");
-      const response = await globalInstance.post(
-        "/liked",
-        { id: animal.id },
-        {
-          headers: {
-            "Authorization": `Bearer ${token}`,
-          },
-        }
-      );
-      return response.data; // Return data for further processing if needed
-    } catch (error) {
-      console.error("Error while liking the animal:", error);
-      // Optionally handle the error, e.g., show an alert or notification
-    }
-  };
-  
 
   if (loading)
     return (
@@ -188,10 +167,7 @@ function AnimalList() {
               />
               <span>{getAnimalName(animal) || "Невідомо"}</span>
             </div>
-            <div className="post-tools">
-              <LikeButton onLike={() => addLiked(animal)}></LikeButton>
-              <button className="go-to-btn">Перейти</button>
-            </div>
+            <button className="go-to-btn">Перейти</button>
           </div>
         ))
       ) : (
@@ -204,4 +180,4 @@ function AnimalList() {
   );
 }
 
-export default AnimalList;
+export default LikedPosts;

@@ -11,6 +11,7 @@ import Home from "./components/Home";
 import Description from "./components/Description";
 import ProfilePage from "./components/ProfilePage";
 import "./App.css";
+import LikedPosts from "./components/LikedPosts";
 
 function App() {
   return (
@@ -27,6 +28,7 @@ function App() {
           <Route path="/search-shelters" element={<ShelterSearch />} />
           <Route path="/user-login" element={<LoginForm />} />
           <Route path="/profile-page" element={<ProfilePage />} />
+          <Route path="/liked-posts" element={<LikedPosts />} />
         </Routes>
       </Home>
     </Router>
