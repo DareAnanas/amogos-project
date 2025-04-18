@@ -2,6 +2,7 @@ import React, { useEffect, useState } from "react";
 import globalInstance from "../service/Interceptor";
 import Hamster from "./HamsterLoading";
 import { Link } from "react-router-dom";
+import Bin from "./Bin"
 
 function MyPosts() {
   const [animals, setAnimals] = useState([]);
@@ -38,6 +39,28 @@ function MyPosts() {
         setLoading(false);
       });
   }, []);
+
+  const handleDeleteAnimal = (id) => {
+    console.log(`Am deleting ${id}`)
+    // Optional: Confirm deletion
+    if (!window.confirm("Ви впевнені, що хочете видалити цей запис?")) {
+      return;
+    }
+    globalInstance
+      .delete(`/myOffers/${id}`, {
+        headers: {
+          "Content-Type": "application/json",
+          Authorization: `Bearer ${localStorage.getItem("token")}`,
+        },
+      })
+      .then((response) => {
+        // Update state to remove the deleted animal
+        setAnimals((prevAnimals) => prevAnimals.filter((animal) => animal.id !== id));
+      })
+      .catch((error) => {
+        console.error("Error deleting animal:", error);
+      });
+  };
 
   // Helper: returns the name for an animal using species or specie as fallback.
   const getAnimalName = (animal) => animal.species || animal.specie || "";
@@ -85,17 +108,11 @@ function MyPosts() {
     return true;
   });
 
+  
+
   if (loading)
     return (
-      <div className="loader">
-        <p className="heading">Loading</p>
-        <div className="loading">
-          <div className="load"></div>
-          <div className="load"></div>
-          <div className="load"></div>
-          <div className="load"></div>
-        </div>
-      </div>
+      <Hamster className="normal"></Hamster>
     );
 
   return (
@@ -177,7 +194,10 @@ function MyPosts() {
               />
               <span>{getAnimalName(animal) || "Невідомо"}</span>
             </div>
-            <button>Перейти</button>
+            <button className="go-to-btn">Перейти</button>
+            <div onClick={() => handleDeleteAnimal(animal.id)}>
+              <Bin></Bin>
+            </div>
           </div>
         ))
       ) : (
@@ -187,8 +207,8 @@ function MyPosts() {
         </div>
       )}
       <Link to="/post-animal">
-      <div tabindex="0" class="plusButton">
-    <svg class="plusIcon" xmlns="http://www.w3.org/2000/svg" viewBox="0 0 30 30">
+      <div tabIndex="0" className="plusButton">
+    <svg className="plusIcon" xmlns="http://www.w3.org/2000/svg" viewBox="0 0 30 30">
      <g mask="url(#mask0_21_345)">
        <path d="M13.75 23.75V16.25H6.25V13.75H13.75V6.25H16.25V13.75H23.75V16.25H16.25V23.75H13.75Z"></path>
      </g>

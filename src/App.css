@@ -213,6 +213,7 @@ footer {
 
 .footer-center {
   margin: auto;
+  margin-right: 50px;
   width: 40%;
 }
 
@@ -459,7 +460,7 @@ div.register {
   font-size: 20px;
 }
 
-.animal-list-card button {
+.animal-list-card .go-to-btn {
   padding: 10px 20px;
   background-color: #f9f987;
   border: 1px solid #ccc;
@@ -469,7 +470,7 @@ div.register {
   transition: background-color 0.2s ease;
 }
 
-.animal-list-card button:hover {
+.animal-list-card .go-to-btn:hover {
   background-color: #ffffa8;
 }
 
@@ -835,7 +836,7 @@ div.register {
 }
 
 .normal {
-  margin-top: 20px;
+  margin-top: 50px;
   font-size: 15px;
 }
 
@@ -953,3 +954,38 @@ div.register {
   fill: black;
   transform: rotate(180deg);
 }
+
+/* Bin-delete */
+/* From Uiverse.io by vinodjangid07 */ 
+.bin-button {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+  width: 55px;
+  height: 55px;
+  border-radius: 15px;
+  background-color: rgb(255, 95, 95);
+  cursor: pointer;
+  border: 3px solid rgb(255, 201, 201);
+  transition-duration: 0.3s;
+}
+.bin-bottom {
+  width: 15px;
+}
+.bin-top {
+  width: 17px;
+  transform-origin: right;
+  transition-duration: 0.3s;
+}
+.bin-button:hover .bin-top {
+  transform: rotate(45deg);
+}
+.bin-button:hover {
+  background-color: rgb(255, 0, 0);
+}
+.bin-button:active {
+  transform: scale(0.9);
+}
+
+/* Bin-delete */

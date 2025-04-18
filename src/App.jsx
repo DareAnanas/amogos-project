@@ -3,7 +3,7 @@ import { BrowserRouter as Router, Routes, Route } from "react-router-dom";
 import AnimalForm from "./components/AnimalForm";
 import ShelterSearch from "./components/ShelterSearch";
 import ShelterForm from "./components/ShelterForm";
-import VolonteerForm from "./components/VolonteerForm";
+import VolunteerForm from "./components/VolunteerForm";
 import AnimalList from "./components/AnimalList";
 import MyPosts from "./components/MyPosts";
 import LoginForm from "./components/LoginForm";
@@ -22,7 +22,7 @@ function App() {
           <Route path="/search-animals" element={<AnimalList />} />
           <Route path="/my-posts" element={<MyPosts/ >} />
           <Route path="/register-shelter" element={<ShelterForm />} />
-          <Route path="/register-volonteer" element={<VolonteerForm />} />
+          <Route path="/register-volonteer" element={<VolunteerForm />} />
           <Route path="/post-animal" element={<AnimalForm />} />
           <Route path="/search-shelters" element={<ShelterSearch />} />
           <Route path="/user-login" element={<LoginForm />} />

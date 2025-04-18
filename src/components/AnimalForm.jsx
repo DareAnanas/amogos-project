@@ -120,8 +120,9 @@ function AnimalForm() {
       <div>
         <label>
           Фото
-          <input type="file" accept="image/*" {...register("photo")} />
+          <input type="url" placeholder="Url" {...register("photo", { required: "Фото є обов'язковим" })} />
         </label>
+        <p className="error-message">{errors.photo ? errors.photo.message : "\u00A0"}</p>
       </div>
 
       <button type="submit">Опублікувати</button>
