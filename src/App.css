@@ -196,6 +196,9 @@ header img {
   box-shadow: 0 6px 18px rgba(26, 61, 47, 0.5);
 }
 
+.liked-posts {
+  margin: 10px 0px 0px 0px;
+}
 
 /* footer */
 footer {
@@ -997,89 +1000,46 @@ div.register {
 
 /* Bin-delete */
 
-/* LikeButton */
-/* From Uiverse.io by waleedlh10 */ 
-.con-like {
-  --red: rgb(255, 50, 50);
+/* LikeButton CSS from Uiverse.io by waleedlh10 */
+.heart-button {
+  background: none;
+  border: none;
+  outline: none;
+  cursor: pointer;
+  padding: 0;
   position: relative;
   width: 50px;
   height: 50px;
+  transition: transform 0.3s ease;
   margin: 10px 20px 10px 20px;
 }
 
-.con-like .like {
-  position: absolute;
+.heart-button svg {
   width: 100%;
   height: 100%;
-  opacity: 0;
-  z-index: 20;
-  cursor: pointer;
+  fill: #bbb; /* unliked color */
+  transition: fill 0.3s ease, transform 0.3s ease;
 }
 
-.con-like .checkmark {
-  width: 100%;
-  height: 100%;
-  display: flex;
-  justify-content: center;
-  align-items: center;
+.heart-button.liked svg {
+  fill: rgb(255, 50, 50); /* liked color */
+  transform: scale(1.2);
 }
 
-.con-like .outline,
-.con-like .filled {
-  fill: var(--red);
-  position: absolute;
-}
-
-.con-like .filled {
-  animation: kfr-filled 0.5s;
-  display: none;
-}
-
-.con-like .celebrate {
-  position: absolute;
-  animation: kfr-celebrate 0.5s;
-  animation-fill-mode: forwards;
-  display: none;
-}
-
-.con-like .poly {
-  stroke: var(--red);
-  fill: var(--red);
-}
-
-.con-like .like:checked ~ .checkmark .filled {
-  display: block
-}
-
-.con-like .like:checked ~ .checkmark .celebrate {
-  display: block
-}
-
-@keyframes kfr-filled {
+/* Optional: add a keyframe animation if you want a "pop" effect */
+@keyframes heart-pop {
   0% {
-    opacity: 0;
-    transform: scale(0);
+    transform: scale(1);
   }
-
   50% {
-    opacity: 1;
-    transform: scale(1.2);
+    transform: scale(1.4);
   }
-}
-
-@keyframes kfr-celebrate {
-  0% {
-    transform: scale(0);
-  }
-
-  50% {
-    opacity: 0.8;
-  }
-
   100% {
     transform: scale(1.2);
-    opacity: 0;
-    display: none;
   }
 }
-/* LikeButton */
+
+/* When liked, you can trigger this pop animation */
+.heart-button.liked {
+  animation: heart-pop 0.3s ease;
+}

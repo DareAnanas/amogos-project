@@ -12,6 +12,7 @@ import Description from "./components/Description";
 import ProfilePage from "./components/ProfilePage";
 import "./App.css";
 import LikedPosts from "./components/LikedPosts";
+import PostsList from "./components/PostsList";
 
 function App() {
   return (
@@ -20,7 +21,7 @@ function App() {
       <Home>
         <Routes>
           <Route path="/" element={<Description />} />
-          <Route path="/search-animals" element={<AnimalList />} />
+          <Route path="/search-animals" element={<PostsList />} />
           <Route path="/my-posts" element={<MyPosts/ >} />
           <Route path="/register-shelter" element={<ShelterForm />} />
           <Route path="/register-volonteer" element={<VolunteerForm />} />

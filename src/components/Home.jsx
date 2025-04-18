@@ -1,6 +1,7 @@
 import React, { useState, useEffect } from "react";
 import { Link } from "react-router-dom";
 import globalInstance from "../service/Interceptor";
+import LikeButton from "./LikeButton";
 
 function Home({children}){
   const [userPhoto, setUserPhoto] = useState(null);
@@ -38,6 +39,7 @@ function Home({children}){
           </div>
           {/* Right: Login Button */}
           <div className="header-section header-right">
+            <Link to="/liked-posts" className="liked-posts"><LikeButton></LikeButton></Link>
             <Link to="/user-login" className="login-btn">Login</Link>
             <Link to="/profile-page"><img src={userPhoto || "public/user_blank.png"} alt="Profile" className="profile" /></Link>
           </div>

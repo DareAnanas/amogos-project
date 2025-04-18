@@ -1,11 +1,39 @@
-import React, { useEffect, useState } from "react";
+// AnimalList.js
+import React, { useState, useEffect } from "react";
 import globalInstance from "../service/Interceptor";
 import Hamster from "./HamsterLoading";
 import LikeButton from "./LikeButton";
 
-function AnimalList() {
-  const [animals, setAnimals] = useState([]);
-  const [loading, setLoading] = useState(true);
+function AnimalList({ animals = [] }) {
+  // State to store liked IDs (returned from /likedIDs as an object):
+  // For example: { "56": true, "34": true, "77": true, ... }
+  const [likedIDs, setLikedIDs] = useState({});
+  const [likedIDsLoading, setLikedIDsLoading] = useState(true);
+
+  // Fetch liked IDs when the component mounts.
+  useEffect(() => {
+    async function fetchLikedIDs() {
+      try {
+        const response = await globalInstance.get("/likedIDs", {
+          headers: {
+            "Content-Type": "application/json",
+            "Authorization": `Bearer ${localStorage.getItem("token")}`,
+          },
+        });
+        // Expecting response.data to be an object, e.g.:
+        // { "56": true, "34": true, "77": true }
+        setLikedIDs(response.data || {});
+        console.log(response.data);
+      } catch (error) {
+        console.error("Error fetching liked IDs:", error);
+      } finally {
+        setLikedIDsLoading(false);
+      }
+    }
+    fetchLikedIDs();
+  }, []);
+
+  // Filtering UI state.
   const [showFilters, setShowFilters] = useState(false);
   const [filters, setFilters] = useState({
     search: "",
@@ -14,40 +42,12 @@ function AnimalList() {
     gender: "",
   });
 
-  useEffect(() => {
-    globalInstance
-      .get("/market", {
-        headers: {
-          "Content-Type": "application/json",
-          "Authorization": `Bearer ${localStorage.getItem("token")}`,
-        },
-      })
-      .then((response) => {
-        const data = response.data;
-        // Convert the data object into an array of animals with id as the key.
-        const animalsWithId = Object.entries(data).map(([id, animal]) => ({
-          id,
-          ...animal,
-        }));
-        setAnimals(animalsWithId);
-        setLoading(false);
-      })
-      .catch((error) => {
-        console.error("Error fetching animals:", error);
-        setLoading(false);
-      });
-  }, []);
-
-  // Helper: returns the name for an animal using species or specie as fallback.
+  // Helper: derive the animal's display name.
   const getAnimalName = (animal) => animal.species || animal.specie || "";
 
-  // Filtering logic:
-  // - Uses a text search on the animal's name and description.
-  // - For species, only passes if the fixed option (e.g., cat, dog) matches.
-  // - For age, parses the selected range (e.g., "1-5") and checks if the animal's age falls within it.
-  // - For gender, compares against the selected fixed value.
+  // Filtering logic.
   const filteredAnimals = animals.filter((animal) => {
-    // Text search
+    // Text search filter.
     if (filters.search) {
       const searchText = filters.search.toLowerCase();
       const nameText = getAnimalName(animal).toLowerCase();
@@ -58,14 +58,14 @@ function AnimalList() {
         return false;
       }
     }
-    // Species filter (fixed values: cat, dog, etc.)
+    // Species filter.
     if (
       filters.species &&
       getAnimalName(animal).toLowerCase() !== filters.species.toLowerCase()
     ) {
       return false;
     }
-    // Age filter (using fixed ranges, e.g., "1-5")
+    // Age filter (e.g., "1-5").
     if (filters.age) {
       const [minAge, maxAge] = filters.age.split("-").map(Number);
       const animalAge = Number(animal.age);
@@ -73,7 +73,7 @@ function AnimalList() {
         return false;
       }
     }
-    // Gender filter (fixed: male, female)
+    // Gender filter.
     if (
       filters.gender &&
       animal.gender &&
@@ -84,30 +84,40 @@ function AnimalList() {
     return true;
   });
 
-  const addLiked = async (animal) => {
+  // While likedIDs are still being fetched, display loading.
+  if (likedIDsLoading) {
+    return <Hamster className="normal" />;
+  }
+
+  // Toggle function for liking/unliking.
+  const toggleLiked = async (animal) => {
+    const token = localStorage.getItem("token");
     try {
-      const token = localStorage.getItem("token");
-      const response = await globalInstance.post(
-        "/liked",
-        { id: animal.id },
-        {
-          headers: {
-            "Authorization": `Bearer ${token}`,
-          },
-        }
-      );
-      return response.data; // Return data for further processing if needed
+      if (likedIDs[animal.id]) {
+        // Already liked: remove like via DELETE.
+        await globalInstance.delete("/liked", {
+          data: { id: animal.id },
+          headers: { "Authorization": `Bearer ${token}` },
+        });
+        // Create a new copy of likedIDs without this animal.
+        setLikedIDs((prev) => {
+          const newLiked = { ...prev };
+          delete newLiked[animal.id];
+          return newLiked;
+        });
+      } else {
+        // Not liked: add like via POST.
+        await globalInstance.post(
+          "/liked",
+          { id: animal.id },
+          { headers: { "Authorization": `Bearer ${token}` } }
+        );
+        setLikedIDs((prev) => ({ ...prev, [animal.id]: true }));
+      }
     } catch (error) {
-      console.error("Error while liking the animal:", error);
-      // Optionally handle the error, e.g., show an alert or notification
+      console.error("Error toggling liked status:", error);
     }
   };
-  
-
-  if (loading)
-    return (
-      <Hamster className="normal"></Hamster>
-    );
 
   return (
     <div className="animal-list-wrapper">
@@ -142,7 +152,6 @@ function AnimalList() {
               <option value="">Всі</option>
               <option value="cat">Кіт</option>
               <option value="dog">Собака</option>
-              {/* You can add more fixed species options here */}
             </select>
           </div>
 
@@ -158,7 +167,6 @@ function AnimalList() {
               <option value="1-5">1-5 років</option>
               <option value="6-10">6-10 років</option>
               <option value="11-15">11-15 років</option>
-              {/* Add more ranges if needed */}
             </select>
           </div>
 
@@ -189,7 +197,10 @@ function AnimalList() {
               <span>{getAnimalName(animal) || "Невідомо"}</span>
             </div>
             <div className="post-tools">
-              <LikeButton onLike={() => addLiked(animal)}></LikeButton>
+              <LikeButton
+                onToggle={() => toggleLiked(animal)}
+                initialLiked={likedIDs[animal.id]}
+              />
               <button className="go-to-btn">Перейти</button>
             </div>
           </div>
@@ -197,7 +208,7 @@ function AnimalList() {
       ) : (
         <div className="center">
           <p>Немає тварин за заданими критеріями.</p>
-          <Hamster className="normal"></Hamster>
+          <Hamster className="normal" />
         </div>
       )}
     </div>

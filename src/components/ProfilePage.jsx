@@ -112,13 +112,9 @@ function ProfilePage() {
     <div className="profile-container">
       <h1>Профіль користувача</h1>
 
-      {/* <div className="profile-image-section">
-        {userPhoto ? (
-          <img src={userPhoto || "public/user_blank.png"} alt="Profile" className="profile-img" />
-        ) : (
-          <img src="default-profile.png" alt="Default Profile" className="profile-img" />
-        )}
+      <div className="profile-image-section">
 
+        <img src={`https://bd-h8ye.onrender.com/userImage/${userInfo?.email}`} alt="Profile" className="profile-img" />
         <div className="upload-section">
           <form onSubmit={handleSubmit(onImageUpload)}>
             <input
@@ -131,7 +127,7 @@ function ProfilePage() {
             </button>
           </form>
         </div>
-      </div> */}
+      </div>
 
       {userInfo && (
         <div className="basic-info">
