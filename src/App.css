@@ -879,6 +879,10 @@ div.register {
   color: #143738;
 }
 
+.profile-img {
+  width: 80px;
+  height: 80px;
+}
 .shelter-info {
   margin-top: 30px;
   padding-top: 20px;

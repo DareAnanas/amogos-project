@@ -4,23 +4,23 @@ import globalInstance from "../service/Interceptor";
 import LikeButton from "./LikeButton";
 
 function Home({children}){
+  const [userInfo, setUserInfo] = useState(null);
   const [userPhoto, setUserPhoto] = useState(null);
-  // useEffect(() => {
-  //   globalInstance
-  //     .get("/userImage", {
-  //       headers: {
-  //         "Authorization": `Bearer ${localStorage.getItem("token")}`,
-  //         "Accept": "application/json",
-  //       },
-  //     })
-  //     .then((response) => {
-  //       console.log("Received user photo:", response.data.photo);
-  //       setUserPhoto(response.data.photo);
-  //     })
-  //     .catch((err) => {
-  //       console.error("Error retrieving user phtot:", err);
-  //     });
-  // }, []);
+  useEffect(() => {
+    globalInstance
+      .get("/myInfo", {
+        headers: {
+          Authorization: `Bearer ${localStorage.getItem("token")}`,
+          Accept: "application/json",
+        },
+      })
+      .then((response) => {
+        setUserInfo(response.data);
+      })
+      .catch((err) => {
+        console.error("Error fetching user info:", err);
+      });
+  }, []);
 
     return (
       <>
@@ -41,7 +41,7 @@ function Home({children}){
           <div className="header-section header-right">
             <Link to="/liked-posts" className="liked-posts"><LikeButton></LikeButton></Link>
             <Link to="/user-login" className="login-btn">Login</Link>
-            <Link to="/profile-page"><img src={userPhoto || "public/user_blank.png"} alt="Profile" className="profile" /></Link>
+            <Link to="/profile-page"><img src={`https://bd-h8ye.onrender.com/userImage/${userInfo?.email}`} alt="Profile" className="profile" /></Link>
           </div>
           
         </header>
