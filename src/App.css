@@ -464,6 +464,7 @@ div.register {
 }
 
 .animal-list-card .go-to-btn {
+  margin: 10px 10px 10px 10px; 
   padding: 10px 20px;
   background-color: #f9f987;
   border: 1px solid #ccc;

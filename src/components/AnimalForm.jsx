@@ -12,8 +12,10 @@ function AnimalForm() {
   const onSubmit = (data) => {
     const formData = {
       ...data,
-      photo: data.photo && data.photo[0] ? data.photo[0] : null,
+      photo: data.photo,
     };
+
+    alert("You submitted the form");
   
     globalInstance
       .post("/myOffers", formData, {
@@ -44,7 +46,7 @@ function AnimalForm() {
             <option value="unknown">Інше</option>
           </select>
         </label>
-        <p className="error-message">{errors.species ? errors.species.message : "\u00A0"}</p>
+        <p className="error-message">{errors.specie ? errors.specie.message : "\u00A0"}</p>
       </div>
 
       <div>
@@ -57,7 +59,7 @@ function AnimalForm() {
             <option value="unknown">Невідомо</option>
           </select>
         </label>
-        <p className="error-message">{errors.gender ? errors.gender.message : "\u00A0"}</p>
+        <p className="error-message">{errors.sex ? errors.sex.message : "\u00A0"}</p>
       </div>
 
       <div>

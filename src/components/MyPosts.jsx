@@ -194,9 +194,11 @@ function MyPosts() {
               />
               <span>{getAnimalName(animal) || "Невідомо"}</span>
             </div>
-            <button className="go-to-btn">Перейти</button>
-            <div onClick={() => handleDeleteAnimal(animal.id)}>
-              <Bin></Bin>
+            <div className="post-tools">
+              <button className="go-to-btn">Перейти</button>
+              <div onClick={() => handleDeleteAnimal(animal.id)}>
+                <Bin></Bin>
+              </div>
             </div>
           </div>
         ))

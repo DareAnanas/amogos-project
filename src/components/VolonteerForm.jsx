@@ -10,6 +10,7 @@ function VolonteerForm() {
   } = useForm();
 
   const onSubmit = (data) => {
+    alert("You successfully registered");
     globalInstance
     .post("/volonteer/register", data, {
       headers: { "Content-Type": "application/json" },

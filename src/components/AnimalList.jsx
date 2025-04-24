@@ -5,8 +5,6 @@ import Hamster from "./HamsterLoading";
 import LikeButton from "./LikeButton";
 
 function AnimalList({ animals = [] }) {
-  // State to store liked IDs (returned from /likedIDs as an object):
-  // For example: { "56": true, "34": true, "77": true, ... }
   const [likedIDs, setLikedIDs] = useState({});
   const [likedIDsLoading, setLikedIDsLoading] = useState(true);
 

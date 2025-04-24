@@ -12,6 +12,7 @@ function LoginForm() {
 
   const onSubmit = (data) => {
     console.log(data);
+    alert("Congrats!!! You logged in.");
     globalInstance
       .post(
         "/login",

@@ -10,6 +10,7 @@ function ShelterForm() {
   } = useForm();
 
   const onSubmit = (data) => {
+    alert("You successfully registered");
     globalInstance
       .post("/shelter/register", data, {
         headers: { "Content-Type": "application/json" },
